@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+    <style>
+        .student_home{
+            height:46.5px;
+            display: flex;
+            flex-direction:row;
+            align-items: center;
+            gap:20px;
+            justify-content: start;
+            background-color: #333;
+        }
+        .student_home a {
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+    .student_home a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    .logo{
+        height:40px;
+        border-radius:50%;
+        }
+
+        .jobs_applied{
+        max-width:300px;
+        background-color:whitesmoke;
+        border-radius: 6px;
+        display: block;
+        margin: auto;
+        margin-top:20px;
+        padding-left:10px;
+        padding-bottom:5px;
+        padding-top:5px;
+    }
+
+
+    .profile-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        margin-top:40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .profile-details {
+        margin-bottom: 20px;
+    }
+
+    .profile-details p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .profile-details strong {
+        font-weight: bold;
+    }
+
+    .update-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .update-button:hover {
+        background-color: #0056b3;
+    }
+
+    .alumni-form {
+        max-width: 600px;
+        margin: 0 auto;
+        margin-top:20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="number"]:focus {
+        border-color: #007bff;
+    }
+
+    .submit-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    .alumni-card {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .alumni-card p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .alumni-card strong {
+        font-weight: bold;
+    }
+
+    .company-card {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .company-card p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .company-card strong {
+        font-weight: bold;
+    }
+    </style>
+
+
+
+
+</head>
+<body>
+
+    <div class="student_home">
+    <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
+    <a href="/">Home</a>
+    <a href="/alumni_profile">profile</a>
+    <a href="/alumni_all">alumni</a>
+    <a href="/alumni_companies">companies</a>
+    <a href="/log_out">Log out</a>
+    </div>
+
+    <% if(locals.profile){%>
+        <div class="profile-container">
+            <div class="profile-details">
+                <p><strong>Name:</strong> <%= profile.name %></p>
+                <p><strong>Email:</strong> <%= profile.email %></p>
+                <p><strong>Company:</strong> <%= profile.company_name %></p>
+                <p><strong>CTC:</strong> <%= profile.ctc %></p>
+                <p><strong>Location:</strong> <%= profile.location %></p>
+                <p><strong>Position:</strong> <%= profile.position %></p>
+                <p><strong>Field:</strong> <%= profile.area %></p>
+                <p><strong>Working Tenure:</strong> <%= profile.working_tenure %></p>
+            </div>
+            <form action="/update_alumni" method="GET">
+                <button type="submit" class="update-button">Update Profile</button>
+            </form>
+        </div>
+    <%}%>
+    
+    
+    <%if(locals.alumni){
+        for(var i=0; i<alumni.length; i++){%>
+            <div class="alumni-card">
+                <p><strong>Name:</strong> <%= alumni[i].name %></p>
+                <p><strong>Email:</strong> <%= alumni[i].email %></p>
+                <p><strong>Company:</strong> <%= alumni[i].company_name %></p>
+                <p><strong>Position:</strong> <%= alumni[i].position %></p>
+                <p><strong>Role:</strong> <%= alumni[i].area %></p>
+            </div>
+    <%}}%>
+    
+
+
+    <%if(locals.company){
+    for(var i=0; i<company.length; i++){%>
+        <div class="company-card">
+            <p><strong>Name:</strong> <%= company[i].name %></p>
+            <p><strong>Email:</strong> <%= company[i].email %></p>
+        </div>
+<%}}%>
+
+
+    <%if(locals.z){%>
+    <form action="/update_alumni" method="POST" class="alumni-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= alum.name %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" value="<%= alum.company_name %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="ctc">CTC:</label>
+            <input type="number" step="0.01" id="ctc" name="ctc" value="<%= alum.ctc %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="area">Area:</label>
+            <input type="text" id="area" name="area" value="<%= alum.area %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="position">Position:</label>
+            <input type="text" id="position" name="position" value="<%= alum.position %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="<%= alum.location %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="working_tenure">Working Tenure:</label>
+            <input type="text" id="working_tenure" name="working_tenure" value="<%= alum.working_tenure %>" required>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="submit-button">Update</button>
+        </div>
+    </form>
+<%}%>
+
+
+
+</body>
+</html>

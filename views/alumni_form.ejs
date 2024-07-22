@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Alumni Registration Form</h2>
+    <%if(locals.err){%>
+        <p><%= err %></p>
+    <%}%>
+    <form action="/submit_alumni_form" method="POST">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div>
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" required>
+        </div>
+        <div>
+            <label for="ctc">CTC:</label>
+            <input type="number" step="0.01" id="ctc" name="ctc" required>
+        </div>
+        <div>
+            <label for="area">Area:</label>
+            <input type="text" id="area" name="area" required>
+        </div>
+        <div>
+            <label for="position">Position:</label>
+            <input type="text" id="position" name="position" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div>
+            <label for="working_tenure">Working Tenure:</label>
+            <input type="text" id="working_tenure" name="working_tenure" required>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</body>
+</html>

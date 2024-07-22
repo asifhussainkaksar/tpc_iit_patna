@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="student_home">
+        <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
+        <a href="/student_profile">profile</a>
+        <a href="/student_company" >companies</a>
+        <a href="/jobs_applied" >jobs applied</a>
+        <a href="/student_alumni" >alumni</a>
+        <a href="/student_offers">offers recieved</a>
+        <a href="/log_out">Log out</a>
+        </div>
+        
+        <% if(locals.student) { 
+            for(var i=0; i<student.length; i++){ %>
+                <div class="student-profile">
+                    <p class="profile-info"><strong>Name:</strong> <%= student[i].name %></p>
+                    <p class="profile-info"><strong>Email:</strong> <%= student[i].email %></p>
+                    <p class="profile-info"><strong>Mobile No:</strong> <%= student[i].mobile %></p>
+                    <p class="profile-info"><strong>Semester:</strong> <%= student[i].semester %></p>
+                    <p class="profile-info"><strong>Branch:</strong> <%= student[i].specialisation %></p>
+                    <p class="profile-info"><strong>Age:</strong> <%= student[i].age %></p>
+                    <p class="profile-info"><strong>Class 10th Percentage:</strong> <%= student[i].percentage10 %></p>
+                    <p class="profile-info"><strong>Class 12th Percentage:</strong> <%= student[i].percentage12 %></p>
+                    <p class="profile-info"><strong>CPI:</strong> <%= student[i].cpi %></p>
+                    <p class="profile-info"><strong>Placed:</strong> <%= student[i].placed %></p>
+                    <form class="profile-update-form" action="/student_update_profile">
+                        <button type="submit" class="update-button">Update Profile</button>
+                    </form>
+                </div>
+            <% } 
+        } %>
+        
+        
+        
+        <div class="more">
+        <div class="one">
+            <%if(locals.company){%>
+        <h2 class="company-heading">Companies</h2>
+        <%for(var i=0; i<company.length; i++){%>
+            <a href="/student_company_jobs/<%=company[i].company_id%>" class="company-link">
+                <p class="company-name"><%= company[i].name %></p>
+            </a>
+        <%}}%>
+    
+        </div>
+        
+        <div class="two">
+        <% if(locals.jobs){%>
+        <%for(var i=0;i<jobs.length;i++){%>   
+        <div class="three">
+        <p>Role: <%=jobs[i].roles%></p>
+        <p>CTC: <%= jobs[i].ctc %> lakhs</p>
+        <p>Minimum cpi: <%= jobs[i].minimum_cpi %></p>
+        <p>interview_mode: <%= jobs[i].interview_mode %></p>
+        <%if(cpi>=jobs[i].minimum_cpi && jobs[i].ctc>=max_pack+5){%>
+            <form action="/student_apply/<%=jobs[i].jobid%>/<%=jobs[i].company_id%>" method="get">
+                <button type="submit">Apply</button>
+            </form>
+        <%}else if(jobs[i].ctc<max_pack+5){%>
+            <p>Not eligible</p>
+            <p>Your current package is more than the jobs package</p>
+        <%}else{%>
+            <p>Not Eligible</p>
+            <p>Your cpi is less than the required cpi</p>
+        <%}%>
+        <%}%>
+    <%}%>
+        </div>
+        </div>
+    
+    
+        <br/>
+        
+        <%if(locals.jobs_applied){
+        for(var i=0; i<jobs_applied.length; i++){%>
+            <div class="job-card">
+                <p class="job-info"><strong>Company:</strong> <%= jobs_applied[i].company_name %></p>
+                <p class="job-info"><strong>Role:</strong> <%= jobs_applied[i].roles %></p>
+                <p class="job-info"><strong>CTC:</strong> <%= jobs_applied[i].ctc %> lakh</p>
+                <p class="job-info"><strong>Interview Mode:</strong> <%= jobs_applied[i].interview_mode %></p>
+            </div>
+        <%}
+    }%>
+    
+        
+        
+        
+    <%if(locals.alumni){
+        for(var i=0; i<alumni.length; i++){%>
+            <div class="alumni-card">
+                <p class="alumni-info"><strong>Name:</strong> <%= alumni[i].name %></p>
+                <p class="alumni-info"><strong>Email:</strong> <%= alumni[i].email %></p>
+                <p class="alumni-info"><strong>Company:</strong> <%= alumni[i].company_name %></p>
+                <p class="alumni-info"><strong>Position:</strong> <%= alumni[i].position %></p>
+                <p class="alumni-info"><strong>Location:</strong> <%= alumni[i].location %></p>
+            </div>
+        <%}}%>
+    
+            
+    
+    
+    
+        <%if(locals.z){%>
+        <form action="/student_update_profile" method="POST" class="update-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" maxlength="100" value="<%=stud.name%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="<%=stud.age%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="text" id="mobile" name="mobile" pattern="\d{10}" value="<%=stud.mobile%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="specialisation">Specialisation:</label>
+                <input type="text" id="specialisation" name="specialisation" maxlength="100" value="<%=stud.specialisation%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <input type="number" id="semester" name="semester" value="<%=stud.semester%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="percentage10">10th Percentage:</label>
+                <input type="number" step="0.01" id="percentage10" name="percentage10" value="<%=stud.percentage10%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="percentage12">12th Percentage:</label>
+                <input type="number" step="0.01" id="percentage12" name="percentage12" value="<%=stud.percentage12%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="CPI">CPI:</label>
+                <input type="number" step="0.01" id="CPI" name="CPI" value="<%=stud.cpi%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <input type="number" id="year" name="year" value="<%=stud.year%>" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="placed">Placed (Yes/No):</label>
+                <input type="text" id="placed" name="placed" maxlength="3" value="<%=stud.placed%>" required>
+            </div>
+    
+            <div class="form-group">
+                <input type="submit" value="Submit" class="submit-button">
+            </div>
+        </form>
+    <%}%>
+    
+    
+            <%if(locals.offers){
+                if(offers.length>0){
+                    for(var i=0;i<offers.length;i++){%>
+                        <div class="jobs_applied">
+                        <p>Company Name: <%= offers[i].company_name %></p>
+                        <p>Role: <%= offers[i].role %></p>
+                        <p>ctc: <%= offers[i].ctc %></p>
+                        </div>
+                <%}}else{%>
+                    <p>No offers recieved yet</p>
+            <%}}%>
+    
+    
+    </body>
+</body>
+</html>

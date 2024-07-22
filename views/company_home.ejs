@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style>
+        .student_home{
+            height:46.5px;
+            display: flex;
+            flex-direction:row;
+            align-items: center;
+            gap:20px;
+            justify-content: start;
+            background-color: #333;
+        }
+        .student_home a {
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+    .student_home a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+        .logo{
+            height:40px;
+            border-radius:50%;
+        }
+
+        .jobs_applied{
+        max-width:300px;
+        background-color:whitesmoke;
+        border-radius: 6px;
+        display: block;
+        margin: auto;
+        margin-bottom:20px;
+        padding-left:10px;
+        padding-bottom:5px;
+        padding-top:5px;
+    }
+    
+
+    .more{
+        display: flex;
+        gap:6px;
+        justify-content: space-between;
+        width:80%;
+    }
+
+    .one{
+        width:20%;
+    }
+    .two{
+        width:80%;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .three{
+        width:300px;
+        background-color:whitesmoke;
+        border-radius: 6px;
+        margin-top: 20px;
+        padding-left:10px;
+        padding-bottom:10px;
+    }
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+    
+    <div class="student_home">
+    <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
+    <a href="/company_add_jobs/<%= id %>">Add New Job</a>
+    <a href="/company_jobs_added">Jobs Added</a>
+    <a href="/company_jobs_applied/<%= id %>">Students Applied</a>
+    <a href="/company_selected">Selected</a>
+    <a href="/log_out">Log out</a>
+    </div>
+
+    <%if(locals.job1){%>
+        <%for(var i=0;i<job1.length;i++){%>
+        <div class="jobs_applied">
+        <p>Role: <%= job1[i].roles %></p>
+        <p>CTC: <%= job1[i].ctc  %></p>
+        <p>minimum CPI: <%= job1[i].minimum_cpi  %></p>
+        <p>Interview Mode: <%= job1[i].interview_mode  %></p>
+        </div>
+        <%}}%>
+
+    <div class="more">
+    <%if(locals.jobs){%>
+        <div class="one">
+        <p>Choose a job</p>
+        <%for(var i=0;i<jobs.length;i++){%>
+        <a href="/company_students_applied/<%= id %>/<%= jobs[i].jobid %>"> <p><%= jobs[i].roles %></p> </a>
+        <%}%>
+        </div>
+    <%}%>
+
+
+    <div class="two">
+    <%if(locals.student){ %>
+    <%for(var i=0;i<student.length;i++){%>
+        <div class="three">
+        <p>Name: <%= student[i].name %></p>
+        <p>Email: <%= student[i].email %></p>
+        <p>Mobile no: <%= student[i].mobile %></p>
+        <p>Branch: <%= student[i].specialisation %></p>
+        <p>CPI: <%= student[i].cpi %></p>
+        <p>10th Percentage: <%= student[i].percentage10 %></p>
+        <p>12th Percentage: <%= student[i].percentage12 %></p>
+        <form action="/company_placed/<%= student[i].id%>/<%= job_id %>" method="get">
+            <button type="submit">Select</button>
+        </form>
+        </div>
+    <%}}%>
+    </div>
+    </div>
+
+
+    <%if(locals.z){%>
+        <h2>Company Registration Form</h2>
+    <form action="/submit_job/<%= id %>" method="post">
+        <label for="minimum_cpi">Minimum CPI:</label><br>
+        <input type="text" id="minimum_cpi" name="minimum_cpi" required><br><br>
+
+        <label for="roles">Role:</label><br>
+        <input type="text" id="roles" name="roles" required><br><br>
+
+        <label for="ctc">CTC:</label><br>
+        <input type="number" step="0.01" id="ctc" name="ctc" required><br><br>
+
+        <label for="interview_mode">Interview Mode:</label><br>
+        <select id="interview_mode" name="interview_mode" required>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <%}%>
+
+
+    <%if(locals.selected){
+        if(selected.length>0){
+            for(var i=0;i<selected.length;i++){%>
+                <div class="jobs_applied">
+                <p>Name: <%= selected[i].name %> </p>
+                <p>Email: <%= selected[i].email %> </p>
+                <p>Branch: <%= selected[i].specialisation %> </p>
+                <p>Mobile No: <%= selected[i].mobile %> </p>
+                <p>Role: <%= selected[i].roles %> </p>
+                <p>CTC: <%= selected[i].ctc %> </p>
+            </div>
+            <%}}else{%>
+                <p>No one is selected</p>
+        <%}}%>
+
+
+</body>
+</html>
