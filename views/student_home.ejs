@@ -4,6 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .student_home{
+            height:46.5px;
+            display: flex;
+            flex-direction:row;
+            align-items: center;
+            gap:20px;
+            justify-content: start;
+            background-color: #333;
+        }
+        .student_home a {
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+    .student_home a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .logo{
+        height:40px;
+        border-radius:50%;
+    }
+
+    .more{
+        display: flex;
+        gap:6px;
+        justify-content: space-between;
+        width:80%;
+    }
+
+    .one{
+        width:20%;
+    }
+    .two{
+        width:80%;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
+    .three{
+        width:600px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        margin-top: 20px;
+        padding-left:10px;
+        padding-bottom:10px;
+    }
+
+
+
+    
+        .student-profile {
+            background-color: #f9f9f9;
+            max-width:600px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin:auto;
+            display:block;
+            padding: 16px;
+            margin-top:50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-info {
+            font-size: 17px;
+            margin: 8px 0;
+        }
+        
+        .profile-info strong {
+            color: #333;
+        }
+        
+        .profile-update-form {
+            margin-top: 16px;
+            
+        }
+        
+        .update-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding:8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .update-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .job-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width:600px;
+            display:block;
+            margin:auto;
+            margin-bottom:20px;
+        }
+        
+        .job-info {
+            font-size: 14px;
+            margin: 8px 0;
+        }
+        
+        .job-info strong {
+            color: #333;
+        }
+        
+        .alumni-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%; /* Ensure card is responsive */
+        }
+        
+        .alumni-info {
+            margin: 8px 0;
+        }
+        
+        .alumni-info strong {
+            color: #444;
+        }
+
+
+    .company-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.company-link {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-link:hover {
+    background-color: #e6f7ff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.company-name {
+    font-size: 18px;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.company-link p {
+    margin: 0;
+}
+
+
+.jobs_applied {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%; /* Center the card horizontally */
+}
+
+.jobs_applied p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.jobs_applied p strong {
+    color: #000;
+    font-weight: bold;
+}
+
+.no-offers {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    margin-top: 20px;
+}
+
+
+
+    </style>
+
 </head>
 <body>
     <div class="student_home">
@@ -16,8 +228,8 @@
         <a href="/log_out">Log out</a>
         </div>
         
-        <% if(locals.student) { 
-            for(var i=0; i<student.length; i++){ %>
+        <% if(locals.student) {%> 
+            <%for(var i=0; i<student.length; i++){ %>
                 <div class="student-profile">
                     <p class="profile-info"><strong>Name:</strong> <%= student[i].name %></p>
                     <p class="profile-info"><strong>Email:</strong> <%= student[i].email %></p>
@@ -33,8 +245,8 @@
                         <button type="submit" class="update-button">Update Profile</button>
                     </form>
                 </div>
-            <% } 
-        } %>
+            <% }%> 
+        <%}%>
         
         
         
@@ -53,29 +265,30 @@
         <div class="two">
         <% if(locals.jobs){%>
         <%for(var i=0;i<jobs.length;i++){%>   
-        <div class="three">
-        <p>Role: <%=jobs[i].roles%></p>
-        <p>CTC: <%= jobs[i].ctc %> lakhs</p>
-        <p>Minimum cpi: <%= jobs[i].minimum_cpi %></p>
-        <p>interview_mode: <%= jobs[i].interview_mode %></p>
-        <%if(cpi>=jobs[i].minimum_cpi && jobs[i].ctc>=max_pack+5){%>
-            <form action="/student_apply/<%=jobs[i].jobid%>/<%=jobs[i].company_id%>" method="get">
-                <button type="submit">Apply</button>
-            </form>
-        <%}else if(jobs[i].ctc<max_pack+5){%>
-            <p>Not eligible</p>
-            <p>Your current package is more than the jobs package</p>
-        <%}else{%>
-            <p>Not Eligible</p>
-            <p>Your cpi is less than the required cpi</p>
-        <%}%>
+            <div class="three">
+                <p><strong>Role:</strong> <%= jobs[i].roles %></p>
+                <p><strong>CTC:</strong> <%= jobs[i].ctc %> lakhs</p>
+                <p><strong>Minimum CPI:</strong> <%= jobs[i].minimum_cpi %></p>
+                <p><strong>Interview Mode:</strong> <%= jobs[i].interview_mode %></p>
+                <% if (cpi >= jobs[i].minimum_cpi && jobs[i].ctc >= max_pack + 5) { %>
+                    <form action="/student_apply/<%= jobs[i].jobid %>/<%= jobs[i].company_id %>" method="get">
+                        <button class="update-button" type="submit">Apply</button>
+                    </form>
+                <% } else if (jobs[i].ctc < max_pack + 5) { %>
+                    <p class="not-eligible">Not eligible</p>
+                    <p>Your current package is more than the job's package</p>
+                <% } else { %>
+                    <p class="not-eligible">Not Eligible</p>
+                    <p>Your CPI is less than the required CPI</p>
+                <% } %>
+            </div>
         <%}%>
     <%}%>
         </div>
         </div>
     
     
-        <br/>
+        
         
         <%if(locals.jobs_applied){
         for(var i=0; i<jobs_applied.length; i++){%>
@@ -165,17 +378,19 @@
     <%}%>
     
     
-            <%if(locals.offers){
-                if(offers.length>0){
-                    for(var i=0;i<offers.length;i++){%>
-                        <div class="jobs_applied">
-                        <p>Company Name: <%= offers[i].company_name %></p>
-                        <p>Role: <%= offers[i].role %></p>
-                        <p>ctc: <%= offers[i].ctc %></p>
-                        </div>
-                <%}}else{%>
-                    <p>No offers recieved yet</p>
-            <%}}%>
+    <% if (locals.offers) { %>
+    <% if (offers.length > 0) { %>
+        <% for (var i = 0; i < offers.length; i++) { %>
+            <div class="jobs_applied">
+                <p><strong>Company Name:</strong> <%= offers[i].company_name %></p>
+                <p><strong>Role:</strong> <%= offers[i].role %></p>
+                <p><strong>CTC:</strong> <%= offers[i].ctc %></p>
+            </div>
+        <% } %>
+    <% } else { %>
+        <p class="no-offers">No offers received yet</p>
+    <% } %>
+<% } %>
     
     
     </body>
