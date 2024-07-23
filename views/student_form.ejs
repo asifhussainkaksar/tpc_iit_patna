@@ -4,65 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* Styling for the form heading */
+.form-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Styling for error messages */
+.error-message {
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the form */
+.student-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Styling for form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Styling for form labels */
+.form-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Styling for form inputs */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Placeholder styling */
+.form-input::placeholder {
+    color: #888;
+    font-size: 16px;
+}
+
+/* Styling for the submit button */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
 </head>
 <body>
-    <h1>fill the following form</h1>
-         
-        <%if(locals.err){%>
-            <p><%= err %></p>
-        <%}%>
-        <form action="/submit_student_form" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" maxlength="100" required>
-            <br><br>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" maxlength="100" required>
-            <br><br>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" maxlength="100" required>
-            <br><br>
-            
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
-            <br><br>
-            
-            <label for="mobile">Mobile:</label>
-            <input type="text" id="mobile" name="mobile" pattern="\d{10}" required>
-            <br><br>
-            
-            <label for="specialisation">Specialisation:</label>
-            <input type="text" id="specialisation" name="specialisation" maxlength="100" required>
-            <br><br>
-            
-            <label for="semester">Semester:</label>
-            <input type="number" id="semester" name="semester" required>
-            <br><br>
-            
-            <label for="percentage10">10th Percentage:</label>
-            <input type="number" step="0.01" id="percentage10" name="percentage10" required>
-            <br><br>
-            
-            <label for="percentage12">12th Percentage:</label>
-            <input type="number" step="0.01" id="percentage12" name="percentage12" required>
-            <br><br>
-            
-            <label for="CPI">CPI:</label>
-            <input type="number" step="0.01" id="CPI" name="CPI" required>
-            <br><br>
-            
-            <label for="year">Year:</label>
-            <input type="number" id="year" name="year" required>
-            <br><br>
-            
-            <label for="placed">Placed (Yes/No):</label>
-            <input type="text" id="placed" name="placed" maxlength="3" required>
-            <br><br>
-            
-            <input type="submit" value="Submit">
-        </form>
-    
+    <h1 class="form-heading">Fill the Following Form</h1>
 
+    <% if (locals.err) { %>
+        <p class="error-message"><%= err %></p>
+    <% } %>
+
+    <form action="/submit_student_form" method="POST" class="student-form">
+        <div class="form-group">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" maxlength="100" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" maxlength="100" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" maxlength="100" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" id="age" name="age" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mobile" class="form-label">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" pattern="\d{10}" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="specialisation" class="form-label">Specialisation:</label>
+            <input type="text" id="specialisation" name="specialisation" maxlength="100" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="semester" class="form-label">Semester:</label>
+            <input type="number" id="semester" name="semester" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="percentage10" class="form-label">10th Percentage:</label>
+            <input type="number" step="0.01" id="percentage10" name="percentage10" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="percentage12" class="form-label">12th Percentage:</label>
+            <input type="number" step="0.01" id="percentage12" name="percentage12" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="CPI" class="form-label">CPI:</label>
+            <input type="number" step="0.01" id="CPI" name="CPI" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="year" class="form-label">Year:</label>
+            <input type="number" id="year" name="year" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="placed" class="form-label">Placed (Yes/No):</label>
+            <input type="text" id="placed" name="placed" maxlength="3" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="submit-button">
+        </div>
+    </form>
 </body>
+
 </html>

@@ -33,16 +33,15 @@
             border-radius:50%;
         }
 
-        .jobs_applied{
-        max-width:300px;
-        background-color:whitesmoke;
-        border-radius: 6px;
-        display: block;
-        margin: auto;
-        margin-bottom:20px;
-        padding-left:10px;
-        padding-bottom:5px;
-        padding-top:5px;
+    .jobs_applied{
+        background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
     }
     
 
@@ -65,13 +64,115 @@
     }
 
     .three{
-        width:300px;
-        background-color:whitesmoke;
+        width:60%;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-radius: 6px;
         margin-top: 20px;
         padding-left:10px;
         padding-bottom:10px;
     }
+
+    /* Styling for the form container */
+.registration-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Styling for the form title */
+.form-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Styling for labels */
+.form-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Styling for text inputs and number inputs */
+.form-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Styling for select dropdown */
+.form-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Styling for the submit button */
+.form-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Styling for the title */
+.choose-job-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Styling for the job links */
+.job-link {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for job links */
+.job-link:hover {
+    background-color: #f1f1f1;
+    color: #0056b3;
+}
+
+/* Styling for the job role text */
+.job-role {
+    margin: 0;
+    font-size: 16px;
+}
+
+
 
 
 
@@ -84,91 +185,127 @@
     
     <div class="student_home">
     <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
-    <a href="/company_add_jobs/<%= id %>">Add New Job</a>
+    <a href="/company_add_jobs/<%= id %>">Add Job</a>
     <a href="/company_jobs_added">Jobs Added</a>
     <a href="/company_jobs_applied/<%= id %>">Students Applied</a>
     <a href="/company_selected">Selected</a>
     <a href="/log_out">Log out</a>
     </div>
 
-    <%if(locals.job1){%>
-        <%for(var i=0;i<job1.length;i++){%>
-        <div class="jobs_applied">
-        <p>Role: <%= job1[i].roles %></p>
-        <p>CTC: <%= job1[i].ctc  %></p>
-        <p>minimum CPI: <%= job1[i].minimum_cpi  %></p>
-        <p>Interview Mode: <%= job1[i].interview_mode  %></p>
-        </div>
-        <%}}%>
+    <% if (locals.job1) { %>
+        <% for (var i = 0; i < job1.length; i++) { %>
+            <div class="jobs_applied">
+                <p><strong>Role:</strong> <%= job1[i].roles %></p>
+                <p><strong>CTC:</strong> <%= job1[i].ctc %></p>
+                <p><strong>Minimum CPI:</strong> <%= job1[i].minimum_cpi %></p>
+                <p><strong>Interview Mode:</strong> <%= job1[i].interview_mode %></p>
+            </div>
+        <% } %>
+    <% } %>
 
     <div class="more">
-    <%if(locals.jobs){%>
-        <div class="one">
-        <p>Choose a job</p>
-        <%for(var i=0;i<jobs.length;i++){%>
-        <a href="/company_students_applied/<%= id %>/<%= jobs[i].jobid %>"> <p><%= jobs[i].roles %></p> </a>
-        <%}%>
-        </div>
-    <%}%>
+    <div class="one">
+        <% if (locals.jobs) { %>
+            <p class="choose-job-title">Choose a job</p>
+            <% for (var i = 0; i < jobs.length; i++) { %>
+                <a class="job-link" href="/company_students_applied/<%= id %>/<%= jobs[i].jobid %>">
+                    <p class="job-role"><%= jobs[i].roles %></p>
+                </a>
+            <% } %>
+        <% } %>
+    </div>
 
 
     <div class="two">
-    <%if(locals.student){ %>
-    <%for(var i=0;i<student.length;i++){%>
-        <div class="three">
-        <p>Name: <%= student[i].name %></p>
-        <p>Email: <%= student[i].email %></p>
-        <p>Mobile no: <%= student[i].mobile %></p>
-        <p>Branch: <%= student[i].specialisation %></p>
-        <p>CPI: <%= student[i].cpi %></p>
-        <p>10th Percentage: <%= student[i].percentage10 %></p>
-        <p>12th Percentage: <%= student[i].percentage12 %></p>
-        <form action="/company_placed/<%= student[i].id%>/<%= job_id %>" method="get">
-            <button type="submit">Select</button>
-        </form>
-        </div>
-    <%}}%>
-    </div>
-    </div>
-
-
-    <%if(locals.z){%>
-        <h2>Company Registration Form</h2>
-    <form action="/submit_job/<%= id %>" method="post">
-        <label for="minimum_cpi">Minimum CPI:</label><br>
-        <input type="text" id="minimum_cpi" name="minimum_cpi" required><br><br>
-
-        <label for="roles">Role:</label><br>
-        <input type="text" id="roles" name="roles" required><br><br>
-
-        <label for="ctc">CTC:</label><br>
-        <input type="number" step="0.01" id="ctc" name="ctc" required><br><br>
-
-        <label for="interview_mode">Interview Mode:</label><br>
-        <select id="interview_mode" name="interview_mode" required>
-            <option value="Online">Online</option>
-            <option value="Offline">Offline</option>
-        </select><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
-    <%}%>
-
-
-    <%if(locals.selected){
-        if(selected.length>0){
-            for(var i=0;i<selected.length;i++){%>
-                <div class="jobs_applied">
-                <p>Name: <%= selected[i].name %> </p>
-                <p>Email: <%= selected[i].email %> </p>
-                <p>Branch: <%= selected[i].specialisation %> </p>
-                <p>Mobile No: <%= selected[i].mobile %> </p>
-                <p>Role: <%= selected[i].roles %> </p>
-                <p>CTC: <%= selected[i].ctc %> </p>
+        <% if (locals.student) { %>
+            
+            <div class="four">
+            <form action="/company_shortlist/<%= job_id %>" method="POST" class="branch-form">
+                <div class="form-group">
+                    <label for="branch" class="form-label">Branch:</label>
+                    <select class="form-select" id="branch" name="branch" required>
+                        <option value="All">All</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Civil">Civil</option>
+                        <option value="Metallurgy">Metallurgy</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cpi" class="form-label">CPI:</label>
+                    <input type="number" id="cpi" name="cpi" step="0.01" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
             </div>
-            <%}}else{%>
-                <p>No one is selected</p>
-        <%}}%>
+
+
+            <% for (var i = 0; i < student.length; i++) { %>
+                <div class="three">
+                    <p><strong>Name:</strong> <%= student[i].name %></p>
+                    <p><strong>Email:</strong> <%= student[i].email %></p>
+                    <p><strong>Mobile no:</strong> <%= student[i].mobile %></p>
+                    <p><strong>Branch:</strong> <%= student[i].specialisation %></p>
+                    <p><strong>CPI:</strong> <%= student[i].cpi %></p>
+                    <p><strong>10th Percentage:</strong> <%= student[i].percentage10 %></p>
+                    <p><strong>12th Percentage:</strong> <%= student[i].percentage12 %></p>
+                    <form action="/company_placed/<%= student[i].id %>/<%= job_id %>" method="get">
+                        <button type="submit" class="form-button">Select</button>
+                    </form>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+    </div>
+
+
+    <% if (locals.z) { %>
+        <h2 class="form-title">Add a new Job</h2>
+        <form class="registration-form" action="/submit_job/<%= id %>" method="post">
+            <label class="form-label" for="minimum_cpi">Minimum CPI:</label>
+            <input class="form-input" type="text" id="minimum_cpi" name="minimum_cpi" required>
+    
+            <label class="form-label" for="roles">Role:</label>
+            <input class="form-input" type="text" id="roles" name="roles" required>
+    
+            <label class="form-label" for="ctc">CTC:</label>
+            <input class="form-input" type="number" step="0.01" id="ctc" name="ctc" required>
+    
+            <label class="form-label" for="interview_mode">Interview Mode:</label>
+            <select class="form-select" id="interview_mode" name="interview_mode" required>
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+            </select>
+    
+            <button class="form-button" type="submit">Submit</button>
+        </form>
+    <% } %>
+    
+
+
+    <% if (locals.selected) {
+        if (selected.length > 0) {
+            for (var i = 0; i < selected.length; i++) { %>
+                <div class="jobs_applied">
+                    <p><strong>Name:</strong> <%= selected[i].name %></p>
+                    <p><strong>Email:</strong> <%= selected[i].email %></p>
+                    <p><strong>Branch:</strong> <%= selected[i].specialisation %></p>
+                    <p><strong>Mobile No:</strong> <%= selected[i].mobile %></p>
+                    <p><strong>Role:</strong> <%= selected[i].roles %></p>
+                    <p><strong>CTC:</strong> <%= selected[i].ctc %></p>
+                </div>
+            <% }
+        } else { %>
+            <p>No one is selected</p>
+        <% }
+    } %>
 
 
 </body>

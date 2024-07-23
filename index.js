@@ -432,6 +432,32 @@ app.get("/company_students_applied/:id1/:id2", requireLogin, requireRole("compan
 });
 
 
+
+app.post("/company_shortlist/:id",requireLogin, requireRole("company"), async (req, res) =>{
+    var company_id = req.session.user_id;
+    var job_id = req.params.id;
+    var branch = req.body.branch;
+    branch = branch.toLowerCase();
+    var cpi = req.body.cpi;
+    //console.log(company_id);
+    //console.log(job_id);
+    //console.log(branch);
+    //console.log(cpi);
+    
+    var z = await db.query(`SELECT 
+        s.id, s.name, s.email, s.mobile, s.specialisation, s.cpi, s.percentage10, s.percentage12
+        FROM students s JOIN student_applied sa
+        ON s.id = sa.student_id
+        WHERE sa.company_id = $1 AND sa.job_id = $2 AND lower(s.specialisation) = $3 AND s.cpi>=$4`
+        ,[company_id, job_id, branch, cpi]);
+        //console.log(z.rows);
+    
+        var y = await db.query("select * from company where company_id=$1",[company_id]);
+        res.render("company_home.ejs", {student : z.rows, id : company_id, jobs : y.rows, job_id : job_id});
+});
+
+
+
 app.get("/company_jobs_added",requireLogin, requireRole("company"), async (req, res) =>{
     var company_id = req.session.user_id;
     var y = await db.query("select * from company where company_id=$1", [company_id]);

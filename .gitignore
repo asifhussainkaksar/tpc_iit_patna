@@ -1,0 +1,12 @@
+# Ignore .env file
+.env
+
+# Ignore database.txt file
+database.txt
+
+# Ignore any .log files
+*.log
+
+# Ignore entire directories
+logs/
+temp/

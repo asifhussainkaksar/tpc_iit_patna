@@ -4,53 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* Styling for the form heading */
+.form-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Styling for error messages */
+.error-message {
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the form */
+.alumni-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Styling for form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Styling for form labels */
+.form-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Styling for form inputs */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Placeholder styling */
+.form-input::placeholder {
+    color: #888;
+    font-size: 16px;
+}
+
+/* Styling for the submit button */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
 </head>
 <body>
-    <h2>Alumni Registration Form</h2>
-    <%if(locals.err){%>
-        <p><%= err %></p>
-    <%}%>
-    <form action="/submit_alumni_form" method="POST">
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <h2 class="form-heading">Alumni Registration Form</h2>
+    
+    <% if (locals.err) { %>
+        <p class="error-message"><%= err %></p>
+    <% } %>
+
+    <form action="/submit_alumni_form" method="POST" class="alumni-form">
+        <div class="form-group">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-input" required>
         </div>
         
-        <div>
-            <label for="company_name">Company Name:</label>
-            <input type="text" id="company_name" name="company_name" required>
+        <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" class="form-input" required>
         </div>
-        <div>
-            <label for="ctc">CTC:</label>
-            <input type="number" step="0.01" id="ctc" name="ctc" required>
+        
+        <div class="form-group">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-input" required>
         </div>
-        <div>
-            <label for="area">Area:</label>
-            <input type="text" id="area" name="area" required>
+        
+        <div class="form-group">
+            <label for="company_name" class="form-label">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" class="form-input" required>
         </div>
-        <div>
-            <label for="position">Position:</label>
-            <input type="text" id="position" name="position" required>
+        
+        <div class="form-group">
+            <label for="ctc" class="form-label">CTC:</label>
+            <input type="number" step="0.01" id="ctc" name="ctc" class="form-input" required>
         </div>
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
+        
+        <div class="form-group">
+            <label for="area" class="form-label">Area:</label>
+            <input type="text" id="area" name="area" class="form-input" required>
         </div>
-        <div>
-            <label for="working_tenure">Working Tenure:</label>
-            <input type="text" id="working_tenure" name="working_tenure" required>
+        
+        <div class="form-group">
+            <label for="position" class="form-label">Position:</label>
+            <input type="text" id="position" name="position" class="form-input" required>
         </div>
-        <div>
-            <button type="submit">Register</button>
+        
+        <div class="form-group">
+            <label for="location" class="form-label">Location:</label>
+            <input type="text" id="location" name="location" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="working_tenure" class="form-label">Working Tenure:</label>
+            <input type="text" id="working_tenure" name="working_tenure" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="submit-button">Register</button>
         </div>
     </form>
 </body>
+
 </html>
