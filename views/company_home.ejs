@@ -172,8 +172,13 @@
     font-size: 16px;
 }
 
-
-
+.main{
+        display: block;
+        margin: auto;
+    }
+h2{
+    text-align:center;
+}
 
 
     </style>
@@ -182,7 +187,7 @@
 
 </head>
 <body>
-    
+
     <div class="student_home">
     <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
     <a href="/company_add_jobs/<%= id %>">Add Job</a>
@@ -191,6 +196,11 @@
     <a href="/company_selected">Selected</a>
     <a href="/log_out">Log out</a>
     </div>
+    
+    
+    <%if(locals.company_name){%>
+        <h2>Welcome <%=company_name%></h2>
+    <%}%>
 
     <% if (locals.job1) { %>
         <% for (var i = 0; i < job1.length; i++) { %>
@@ -218,7 +228,7 @@
 
     <div class="two">
         <% if (locals.student) { %>
-            
+            <% if(student.length>0){%>
             <div class="four">
             <form action="/company_shortlist/<%= job_id %>" method="POST" class="branch-form">
                 <div class="form-group">
@@ -260,7 +270,9 @@
                         <button type="submit" class="form-button">Select</button>
                     </form>
                 </div>
-            <% } %>
+            <% }}else{%>
+                <p>No student has applied for the job</p>
+            <%}%>
         <% } %>
     </div>
     </div>
@@ -306,6 +318,12 @@
             <p>No one is selected</p>
         <% }
     } %>
+
+
+
+    <%if(locals.e){%>
+        <img class="main" src="https://www.iitp.ac.in/images/photo/incubation-center-top.jpg" >
+    <%}%>
 
 
 </body>

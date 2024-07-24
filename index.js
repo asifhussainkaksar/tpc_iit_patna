@@ -58,23 +58,129 @@ app.get("/", (req, res)=>{
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Admin
 app.get("/admin",(req,res)=>{
     res.render("home.ejs", {z : 4});
 })
 
 
-app.post("/admin_login", (req, res)=>{
-    var email=req.body.email;
-    var password=req.body.password;
+app.get("/admin_form", (req, res)=>{
+    res.render("admin_form.ejs");
+});
 
-    if(email=="asif@gmail.com" && password=="Abcde"){
-        res.send("login successfully");
+
+app.post("/submit_admin_form", async (req, res) =>{
+    var admin = req.body;
+    //console.log(email);
+    //console.log(password);
+
+    var y = await db.query("select * from admin where email=$1",[admin.email]);
+    if(y.rows.length>0){
+        return res.render("admin_form.ejs", {err : "email already exist"});
+    }
+
+    await db.query("insert into admin_password (email, password) values ($1, $2)",[admin.email, admin.password]);
+    
+    bcrypt.hash(admin.password, saltRounds, async (err, hash) => {
+        if (err) {
+            console.error("Error hashing password:", err);
+        } else {
+        //console.log("Hashed Password:", hash);
+            await db.query(`INSERT INTO admin (email,password) VALUES ($1, $2)`,[admin.email, hash]);
+            res.render("home.ejs");
+        }
+      });
+
+});
+
+app.post("/admin_login", async (req, res)=>{
+    var email = req.body.email;
+    var password = req.body.password;
+    
+    var y =await db.query("select * from admin where email=$1",[email]);
+    
+    if(y.rows.length>0){ 
+    var hash_password=y.rows[0].password;
+    bcrypt.compare(password, hash_password, (err, result) => {
+        if (err) {
+            console.error("Error comparing passwords:", err);
+        } else {
+            if (result) {
+            req.session.user_id=y.rows[0].id;
+            req.session.role="admin";
+            res.render("admin_home.ejs",{e : 1});
+            //res.render("home.ejs");
+            } else {
+            res.send("Incorrect Password");
+            }
+        }
+        });
     }
     else{
-        res.send("incorrect password or email");
+        res.send("email not found");
     }
 });
 
+
+
+app.get("/admin_stats",requireLogin, requireRole("admin"), (req, res) =>{
+    res.render("admin_home.ejs", {z : 1});
+});
+
+
+app.post("/admin_stats",requireLogin, requireRole("admin"), async (req, res) =>{
+    //console.log(req.body.specialisation);
+    var branch = req.body.specialisation;
+    
+    var total = await db.query(`SELECT COUNT(*) AS total_students FROM students
+                WHERE specialisation = $1`,[branch]);
+
+    var placed = await db.query(`SELECT COUNT(DISTINCT student_id) AS placed_students FROM placed
+                JOIN students ON placed.student_id = students.id
+                WHERE students.specialisation = $1`,[branch]);
+
+    var max_package = await db.query(`SELECT MAX(package) AS highest_package FROM placed
+                    JOIN students ON placed.student_id = students.id
+                    WHERE students.specialisation = $1`,[branch]);
+
+    var min_package = await db.query(`SELECT MIN(package) AS lowest_package FROM placed
+                    JOIN students ON placed.student_id = students.id
+                    WHERE students.specialisation = $1`,[branch]);
+
+    var avg_package = await db.query(`SELECT AVG(package) AS average_package FROM placed
+                    JOIN students ON placed.student_id = students.id
+                    WHERE students.specialisation = $1`,[branch]);
+
+        var total_students = total.rows[0].total_students;
+        var placed_students = placed.rows[0].placed_students;
+        var highest_package = max_package.rows[0].highest_package;
+        var lowest_package = min_package.rows[0].lowest_package;
+        var average_package = avg_package.rows[0].average_package;
+
+        res.render("admin_home.ejs", {
+            z: 1,
+            f: 1,
+            total: total_students,
+            placed: placed_students,
+            max_package: highest_package,
+            min_package: lowest_package,
+            avg_package: average_package
+        });
+});
 
 
 
@@ -128,12 +234,6 @@ app.post("/submit_student_form", async (req, res) =>{
     
 });
 
-
-
-
-app.get("/student_login", (req, res) =>{
-    res.render("student_login.ejs");
-})
 
 
 
@@ -304,6 +404,8 @@ app.get("/student_offers",requireLogin, requireRole("student"), async (req, res)
 
 
 
+
+
 // COMPANY
 app.get("/company", (req,res)=>{
     res.render("home.ejs",{z : 2});
@@ -365,7 +467,7 @@ app.post("/company_login", async (req, res) =>{
             //res.send("login successfully")
             req.session.user_id=y.rows[0].company_id;
             req.session.role="company";
-            res.render("company_home.ejs",{id : y.rows[0].company_id});
+            res.render("company_home.ejs",{id : y.rows[0].company_id, e:1, company_name : y.rows[0].name});
             } else {
             res.send("Incorrect Password");
             }
@@ -441,16 +543,27 @@ app.post("/company_shortlist/:id",requireLogin, requireRole("company"), async (r
     var cpi = req.body.cpi;
     //console.log(company_id);
     //console.log(job_id);
-    //console.log(branch);
+    console.log(branch);
     //console.log(cpi);
     
-    var z = await db.query(`SELECT 
+    var z;
+    if(branch!="all"){ 
+    z = await db.query(`SELECT 
         s.id, s.name, s.email, s.mobile, s.specialisation, s.cpi, s.percentage10, s.percentage12
         FROM students s JOIN student_applied sa
         ON s.id = sa.student_id
         WHERE sa.company_id = $1 AND sa.job_id = $2 AND lower(s.specialisation) = $3 AND s.cpi>=$4`
         ,[company_id, job_id, branch, cpi]);
         //console.log(z.rows);
+    }
+    else{
+        z = await db.query(`SELECT 
+            s.id, s.name, s.email, s.mobile, s.specialisation, s.cpi, s.percentage10, s.percentage12
+            FROM students s JOIN student_applied sa
+            ON s.id = sa.student_id
+            WHERE sa.company_id = $1 AND sa.job_id = $2 AND s.cpi>=$3`
+            ,[company_id, job_id, cpi]);
+    }
     
         var y = await db.query("select * from company where company_id=$1",[company_id]);
         res.render("company_home.ejs", {student : z.rows, id : company_id, jobs : y.rows, job_id : job_id});
@@ -614,7 +727,7 @@ app.get("/alumni_profile",requireLogin, requireRole("alumni"), async (req, res) 
     res.render("alumni_home.ejs", {profile: y.rows[0]});
 });
 
-app.get("/alumni_all", async (req, res)=>{
+app.get("/alumni_all",requireLogin, requireRole("alumni"), async (req, res)=>{
     var y = await db.query("select * from alumni");
     res.render("alumni_home.ejs",{alumni : y.rows});
 })

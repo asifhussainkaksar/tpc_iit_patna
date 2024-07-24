@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .student_home{
+            height:46.5px;
+            display: flex;
+            flex-direction:row;
+            align-items: center;
+            gap:20px;
+            justify-content: start;
+            background-color: #333;
+        }
+        .student_home a {
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+    .student_home a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    .logo{
+        height:40px;
+        border-radius:50%;
+        }
+
+        .main{
+        display: block;
+        margin: auto;
+    }
+h2{
+    text-align:center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="student_home">
+        <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
+        <a href="/admin_stats">stats</a>
+        <a href="/alumni_profile">profile</a>
+        <a href="/alumni_all">alumni</a>
+        <a href="/alumni_companies">companies</a>
+        <a href="/log_out">Log out</a>
+        </div>
+        
+        <%if(locals.e){%>
+            <h2>Welcome</h2>
+            <img class="main" src="https://www.iitp.ac.in/images/photo/incubation-center-top.jpg" >
+        <%}%>
+
+
+        <%if(locals.z){%>
+            <form action="/admin_stats" method="post">
+            <label for="specialisation" class="form-label">Branch:</label>
+            <select class="form-select" id="specialisation" name="specialisation" required>
+                <option value="All">All</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="Metallurgy">Metallurgy</option>
+            </select>
+
+            <input type="submit" value="submit"> 
+            </form>
+        <%}%>
+
+
+        <%if(locals.f){%>
+            <p>Total: <%= total %></p>
+            <p>Placed: <%= placed %></p>
+            <p>Maximum Package: <%= max_package %></p>
+            <p>Minimum Package: <%= min_package %></p>
+            <p>Average Package: <%= avg_package %></p>
+        <%}%>
+
+        
+</body>
+</html>

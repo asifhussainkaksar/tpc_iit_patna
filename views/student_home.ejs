@@ -262,6 +262,10 @@
 .submit-button:hover {
     background-color: #0056b3;
 }
+
+.ha{
+    text-align: center;
+}
     </style>
 
 </head>
@@ -339,6 +343,7 @@
         
         
         <%if(locals.jobs_applied){
+        if(jobs_applied.length>0){
         for(var i=0; i<jobs_applied.length; i++){%>
             <div class="job-card">
                 <p class="job-info"><strong>Company:</strong> <%= jobs_applied[i].company_name %></p>
@@ -346,8 +351,10 @@
                 <p class="job-info"><strong>CTC:</strong> <%= jobs_applied[i].ctc %> lakh</p>
                 <p class="job-info"><strong>Interview Mode:</strong> <%= jobs_applied[i].interview_mode %></p>
             </div>
-        <%}
-    }%>
+        <%}}else{%>
+            <p class="ha">Not applied for any job</p>
+        <%}%>
+    <%}%>
     
         
         
@@ -361,7 +368,8 @@
                 <p class="alumni-info"><strong>Position:</strong> <%= alumni[i].position %></p>
                 <p class="alumni-info"><strong>Location:</strong> <%= alumni[i].location %></p>
             </div>
-        <%}}%>
+        <%}%>
+        <%}%>
     
             
     
@@ -386,7 +394,16 @@
 
         <div class="form-group">
             <label for="specialisation" class="form-label">Specialisation:</label>
-            <input type="text" id="specialisation" name="specialisation" maxlength="100" value="<%= stud.specialisation %>" class="form-input" required>
+            <select class="form-select" id="specialisation" name="specialisation"  required>
+                <option value="All">All</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="Metallurgy">Metallurgy</option>
+            </select>
         </div>
 
         <div class="form-group">
