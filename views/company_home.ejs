@@ -4,187 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-
-    <style>
-        .student_home{
-            height:46.5px;
-            display: flex;
-            flex-direction:row;
-            align-items: center;
-            gap:20px;
-            justify-content: start;
-            background-color: #333;
-        }
-        .student_home a {
-        color: white;
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-    }
-
-    .student_home a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-        .logo{
-            height:40px;
-            border-radius:50%;
-        }
-
-    .jobs_applied{
-        background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
-    }
-    
-
-    .more{
-        display: flex;
-        gap:6px;
-        justify-content: space-between;
-        width:80%;
-    }
-
-    .one{
-        width:20%;
-    }
-    .two{
-        width:80%;
-        display: flex;
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .three{
-        width:60%;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 6px;
-        margin-top: 20px;
-        padding-left:10px;
-        padding-bottom:10px;
-    }
-
-    /* Styling for the form container */
-.registration-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-/* Styling for the form title */
-.form-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Styling for labels */
-.form-label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-/* Styling for text inputs and number inputs */
-.form-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-/* Styling for select dropdown */
-.form-select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-/* Styling for the submit button */
-.form-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.form-button:hover {
-    background-color: #0056b3;
-}
-
-
-
-/* Styling for the title */
-.choose-job-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-/* Styling for the job links */
-.job-link {
-    display: block;
-    text-decoration: none;
-    color: #007bff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Hover effect for job links */
-.job-link:hover {
-    background-color: #f1f1f1;
-    color: #0056b3;
-}
-
-/* Styling for the job role text */
-.job-role {
-    margin: 0;
-    font-size: 16px;
-}
-
-.main{
-        display: block;
-        margin: auto;
-    }
-h2{
-    text-align:center;
-}
-
-
-    </style>
-
-
-
+    <link rel="stylesheet" href="/styles/company.css">
 </head>
 <body>
 
@@ -194,6 +14,7 @@ h2{
     <a href="/company_jobs_added">Jobs Added</a>
     <a href="/company_jobs_applied/<%= id %>">Students Applied</a>
     <a href="/company_selected">Selected</a>
+    <a href="/company_forget">Forget password</a>
     <a href="/log_out">Log out</a>
     </div>
     
@@ -318,7 +139,26 @@ h2{
             <p>No one is selected</p>
         <% }
     } %>
+    
 
+
+    <%if(locals.company_forget){%>
+    <h2 class="ha">Reset Your Password</h2>
+    <%if(locals.err){%>
+        <p class="error-message"><%= err %></p>
+    <%}%>
+    <form action="/company_forget" method="POST" class="reset-password-form">
+        <div class="form-group">
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+<%}%>
 
 
     <%if(locals.e){%>

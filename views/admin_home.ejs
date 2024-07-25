@@ -4,51 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-
-        .student_home{
-            height:46.5px;
-            display: flex;
-            flex-direction:row;
-            align-items: center;
-            gap:20px;
-            justify-content: start;
-            background-color: #333;
-        }
-        .student_home a {
-        color: white;
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-    }
-
-    .student_home a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-    
-    .logo{
-        height:40px;
-        border-radius:50%;
-        }
-
-        .main{
-        display: block;
-        margin: auto;
-    }
-h2{
-    text-align:center;
-}
-
-    </style>
+    <link rel="stylesheet" href="/styles/admin.css">
 </head>
+
 <body>
     <div class="student_home">
         <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
+        <a href="/admin_add_student">Add Student</a>
+        <a href="/admin_add_company">Add companies</a>
+        <a href="/admin_students">students</a>
+        <a href="/companies">companies</a>
         <a href="/admin_stats">stats</a>
-        <a href="/alumni_profile">profile</a>
-        <a href="/alumni_all">alumni</a>
-        <a href="/alumni_companies">companies</a>
         <a href="/log_out">Log out</a>
         </div>
         
@@ -58,33 +24,181 @@ h2{
         <%}%>
 
 
-        <%if(locals.z){%>
-            <form action="/admin_stats" method="post">
-            <label for="specialisation" class="form-label">Branch:</label>
-            <select class="form-select" id="specialisation" name="specialisation" required>
-                <option value="All">All</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Artificial Intelligence">Artificial Intelligence</option>
-                <option value="Electrical">Electrical</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Mechanical">Mechanical</option>
-                <option value="Civil">Civil</option>
-                <option value="Metallurgy">Metallurgy</option>
-            </select>
+        <% if (locals.z) { %>
+            <form action="/admin_stats" method="post" class="branch-form">
+                <label for="specialisation" class="branch-form-label">Branch:</label>
+                <select class="branch-form-select" id="specialisation" name="specialisation" required>
+                    <option value="All">All</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Metallurgy">Metallurgy</option>
+                </select>
+                <input type="submit" value="Submit" class="branch-submit-button">
+            </form>
+        <% } %>
+        
+        
+        <% if (locals.f) { %>
+            <div class="stats">
+                <p><strong>Total:</strong> <%= total %></p>
+                <p><strong>Placed:</strong> <%= placed %></p>
+                <p><strong>Maximum Package:</strong> <%= max_package %></p>
+                <p><strong>Minimum Package:</strong> <%= min_package %></p>
+                <p><strong>Average Package:</strong> <%= avg_package %></p>
+            </div>
+        <% } %>
+        
 
-            <input type="submit" value="submit"> 
+
+        <%if(locals.add_student){%>
+            <form action="/admin_add_student" method="POST" class="student-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" id="name" name="name" maxlength="100" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" maxlength="100" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="specialisation" class="form-label">Specialisation:</label>
+                    <select class="form-select" id="specialisation" name="specialisation" required>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Civil">Civil</option>
+                        <option value="Metallurgy">Metallurgy</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="semester" class="form-label">Semester:</label>
+                    <input type="number" id="semester" name="semester" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="CPI" class="form-label">CPI:</label>
+                    <input type="number" step="0.01" id="CPI" name="CPI" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="year" class="form-label">Year:</label>
+                    <input type="number" id="year" name="year" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="submit-button">
+                </div>
             </form>
         <%}%>
 
 
-        <%if(locals.f){%>
-            <p>Total: <%= total %></p>
-            <p>Placed: <%= placed %></p>
-            <p>Maximum Package: <%= max_package %></p>
-            <p>Minimum Package: <%= min_package %></p>
-            <p>Average Package: <%= avg_package %></p>
+
+        <%if(locals.add_company){%>
+            <% if (locals.err) { %>
+                <p class="error-message"><%= err %></p>
+            <% } %>
+        
+            <form action="/admin_add_company" method="POST" class="student-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="form-label">Company Name:</label>
+                    <input type="text" id="name" name="name" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="submit-button">Register</button>
+                </div>
+            </form>
+        <%}%>
+
+
+
+
+
+        
+        <%if(locals.total_student){%>
+            
+            <div class="moo">
+            
+            <form action="/admin_students" method="post" class="branch-form">
+                <label for="specialisation" class="branch-form-label">Branch:</label>
+                <select class="branch-form-select" id="specialisation" name="specialisation" required>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Metallurgy">Metallurgy</option>
+                </select>
+                <input type="submit" value="Submit" class="branch-submit-button">
+            </form>
+
+
+            <div class="search-container">
+                <form action="/admin_students_search" method="POST" class="search-form">
+                    <label for="search" class="search-label">Search:</label>
+                    <input type="text" id="search" name="search" placeholder="Search By name or branch" required class="search-input">
+                    <button type="submit" class="search-button">Submit</button>
+                </form>
+            </div>
+        
+
+            </div>
+
+            <div class="students">
+            <div class="total_students">
+                <h2>All Students</h2>
+                <%if(total_student.length>0){
+                for(var i=0;i<total_student.length;i++){%>
+                    <div class="one">
+                    <p><strong>Name: </strong><%= total_student[i].name %></p>
+                    <p><strong>Email: </strong><%= total_student[i].email %></p>
+                    <p><strong>Branch: </strong><%= total_student[i].specialisation %></p>
+                    <p><strong>Mobile no:</strong><%= total_student[i].mobile%></p>
+                    <p><strong>CPI:</strong><%= total_student[i].cpi%></p>
+                    <p><strong>Year:</strong><%= total_student[i].year%></p>
+                    <p><strong>10th percentage:</strong><%= total_student[i].percentage10%></p>
+                    <p><strong>12th percentage</strong><%= total_student[i].percentage12%></p>
+
+                    </div>
+                <%}}else{%>
+                    <p>No student has been added</p>
+                <%}%>
+            </div>
+            <div class="student_placed">
+                <h2>Placed Students</h2>
+                <%if(placed_student.length>0){
+                for(var i=0;i<placed_student.length;i++){%>
+                    <div class="one">
+                    <p><strong>Name: </strong> <%= placed_student[i].student_name %> </p>
+                    <p><strong>Email: </strong> <%= placed_student[i].student_email %> </p>
+                    <p><strong>Branch: </strong> <%= placed_student[i].student_specialisation %> </p>
+                    <p><strong>Company: </strong> <%= placed_student[i].company_name %> </p>
+                    <p><strong>Package: </strong> <%= placed_student[i].ctc %> </p>
+                    <p><strong>role: </strong> <%= placed_student[i].roles %> </p>
+                    </div>
+                <%}}else{%>
+                    <p>No Student has been placed</p>
+                <%}%>
+                </div>
+            </div>
         <%}%>
 
         
+
 </body>
 </html>

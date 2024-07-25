@@ -4,269 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        .student_home{
-            height:46.5px;
-            display: flex;
-            flex-direction:row;
-            align-items: center;
-            gap:20px;
-            justify-content: start;
-            background-color: #333;
-        }
-        .student_home a {
-        color: white;
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-    }
-
-    .student_home a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-    .logo{
-        height:40px;
-        border-radius:50%;
-    }
-
-    .more{
-        display: flex;
-        gap:6px;
-        justify-content: space-between;
-        width:80%;
-    }
-
-    .one{
-        width:20%;
-    }
-    .two{
-        width:80%;
-        display: flex;
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-
-    .three{
-        width:60%;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 6px;
-        margin-top: 20px;
-        padding-left:10px;
-        padding-bottom:10px;
-    }
-
-
-
-    
-        .student-profile {
-            background-color: #f9f9f9;
-            max-width:600px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin:auto;
-            display:block;
-            padding: 16px;
-            margin-top:50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-info {
-            font-size: 17px;
-            margin: 8px 0;
-        }
-        
-        .profile-info strong {
-            color: #333;
-        }
-        
-        .profile-update-form {
-            margin-top: 16px;
-            
-        }
-        
-        .update-button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding:6px 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .update-button:hover {
-            background-color: #0056b3;
-        }
-        
-        .job-card {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width:600px;
-            display:block;
-            margin:auto;
-            margin-bottom:20px;
-        }
-        
-        .job-info {
-            font-size: 14px;
-            margin: 8px 0;
-        }
-        
-        .job-info strong {
-            color: #333;
-        }
-        
-        .alumni-card {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%; /* Ensure card is responsive */
-        }
-        
-        .alumni-info {
-            margin: 8px 0;
-        }
-        
-        .alumni-info strong {
-            color: #444;
-        }
-
-
-    .company-heading {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.company-link {
-    display: block;
-    text-decoration: none;
-    color: #007bff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.company-link:hover {
-    background-color: #e6f7ff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.company-name {
-    font-size: 18px;
-    color: #555;
-    margin: 0;
-    font-weight: 500;
-}
-
-.company-link p {
-    margin: 0;
-}
-
-
-.jobs_applied {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%; /* Center the card horizontally */
-}
-
-.jobs_applied p {
-    margin: 8px 0;
-    color: #333;
-    font-size: 16px;
-}
-
-.jobs_applied p strong {
-    color: #000;
-    font-weight: bold;
-}
-
-.no-offers {
-    text-align: center;
-    font-size: 18px;
-    color: #999;
-    margin-top: 20px;
-}
-
-
-
-
-/* Styling for the update form */
-.update-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-/* Styling for form groups */
-.form-group {
-    margin-bottom: 20px;
-}
-
-/* Styling for form inputs */
-.form-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-    background-color: #fff;
-    color: #333;
-}
-
-/* Placeholder styling */
-.form-input::placeholder {
-    color: #888;
-    font-size: 16px;
-}
-
-/* Styling for the submit button */
-.submit-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-}
-
-.ha{
-    text-align: center;
-}
-    </style>
+    <link rel="stylesheet" href="/styles/student.css" >
 
 </head>
 <body>
@@ -277,6 +15,7 @@
         <a href="/jobs_applied" >jobs applied</a>
         <a href="/student_alumni" >alumni</a>
         <a href="/student_offers">offers recieved</a>
+        <a href="/student_forget">Change Password</a>
         <a href="/log_out">Log out</a>
         </div>
         
@@ -377,10 +116,6 @@
     
         <% if (locals.z) { %>
     <form action="/student_update_profile" method="POST" class="update-form">
-        <div class="form-group">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" id="name" name="name" maxlength="100" value="<%= stud.name %>" class="form-input" required>
-        </div>
 
         <div class="form-group">
             <label for="age" class="form-label">Age:</label>
@@ -393,25 +128,6 @@
         </div>
 
         <div class="form-group">
-            <label for="specialisation" class="form-label">Specialisation:</label>
-            <select class="form-select" id="specialisation" name="specialisation"  required>
-                <option value="All">All</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Artificial Intelligence">Artificial Intelligence</option>
-                <option value="Electrical">Electrical</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Mechanical">Mechanical</option>
-                <option value="Civil">Civil</option>
-                <option value="Metallurgy">Metallurgy</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="semester" class="form-label">Semester:</label>
-            <input type="number" id="semester" name="semester" value="<%= stud.semester %>" class="form-input" required>
-        </div>
-
-        <div class="form-group">
             <label for="percentage10" class="form-label">10th Percentage:</label>
             <input type="number" step="0.01" id="percentage10" name="percentage10" value="<%= stud.percentage10 %>" class="form-input" required>
         </div>
@@ -419,16 +135,6 @@
         <div class="form-group">
             <label for="percentage12" class="form-label">12th Percentage:</label>
             <input type="number" step="0.01" id="percentage12" name="percentage12" value="<%= stud.percentage12 %>" class="form-input" required>
-        </div>
-
-        <div class="form-group">
-            <label for="CPI" class="form-label">CPI:</label>
-            <input type="number" step="0.01" id="CPI" name="CPI" value="<%= stud.cpi %>" class="form-input" required>
-        </div>
-
-        <div class="form-group">
-            <label for="year" class="form-label">Year:</label>
-            <input type="number" id="year" name="year" value="<%= stud.year %>" class="form-input" required>
         </div>
 
         <div class="form-group">
@@ -460,6 +166,26 @@
     <% } %>
 <% } %>
     
+
+
+<%if(locals.forget_password){%>
+    <h2 class="ha">Reset Your Password</h2>
+    <%if(locals.err){%>
+        <p class="error-message"><%= err %></p>
+    <%}%>
+    <form action="/student_forget" method="POST" class="reset-password-form">
+        <div class="form-group">
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+<%}%>
+
     
     </body>
 </body>
