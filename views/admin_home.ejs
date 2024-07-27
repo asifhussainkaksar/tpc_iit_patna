@@ -5,18 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/styles/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="student_home">
+    
+
+    <div class="topnav" id="myTopnav">
         <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
         <a href="/admin_add_student">Add Student</a>
         <a href="/admin_add_company">Add companies</a>
         <a href="/admin_students">students</a>
-        <a href="/companies">companies</a>
+        <a href="/admin_company">companies</a>
         <a href="/admin_stats">stats</a>
         <a href="/log_out">Log out</a>
-        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      
+      <script>
+        function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+        }
+      </script>
+
         
         <%if(locals.e){%>
             <h2>Welcome</h2>
@@ -133,7 +152,7 @@
             
             <div class="moo">
             
-            <form action="/admin_students" method="post" class="branch-form">
+            <form action="/admin_students" method="post" class="branch-form2">
                 <label for="specialisation" class="branch-form-label">Branch:</label>
                 <select class="branch-form-select" id="specialisation" name="specialisation" required>
                     <option value="Computer Science">Computer Science</option>
@@ -151,7 +170,7 @@
             <div class="search-container">
                 <form action="/admin_students_search" method="POST" class="search-form">
                     <label for="search" class="search-label">Search:</label>
-                    <input type="text" id="search" name="search" placeholder="Search By name or branch" required class="search-input">
+                    <input type="text" id="search" name="search" placeholder="Search by name or branch" required class="search-input">
                     <button type="submit" class="search-button">Submit</button>
                 </form>
             </div>
@@ -164,7 +183,7 @@
                 <h2>All Students</h2>
                 <%if(total_student.length>0){
                 for(var i=0;i<total_student.length;i++){%>
-                    <div class="one">
+                    <div class="none">
                     <p><strong>Name: </strong><%= total_student[i].name %></p>
                     <p><strong>Email: </strong><%= total_student[i].email %></p>
                     <p><strong>Branch: </strong><%= total_student[i].specialisation %></p>
@@ -173,7 +192,9 @@
                     <p><strong>Year:</strong><%= total_student[i].year%></p>
                     <p><strong>10th percentage:</strong><%= total_student[i].percentage10%></p>
                     <p><strong>12th percentage</strong><%= total_student[i].percentage12%></p>
-
+                    <form action="/admin_delete_student/<%= total_student[i].id %>" method="post">
+                        <button type="submit">delete</button>
+                    </form>
                     </div>
                 <%}}else{%>
                     <p>No student has been added</p>
@@ -183,7 +204,7 @@
                 <h2>Placed Students</h2>
                 <%if(placed_student.length>0){
                 for(var i=0;i<placed_student.length;i++){%>
-                    <div class="one">
+                    <div class="none">
                     <p><strong>Name: </strong> <%= placed_student[i].student_name %> </p>
                     <p><strong>Email: </strong> <%= placed_student[i].student_email %> </p>
                     <p><strong>Branch: </strong> <%= placed_student[i].student_specialisation %> </p>
@@ -198,7 +219,45 @@
             </div>
         <%}%>
 
+
+
+
+
+        <div class="more">
+        <div class="one">
+        <%if(locals.company){%>
+        <h2 class="company-heading">Companies</h2>
+        <%for(var i=0; i<company.length; i++){%>
+            <div class="nono">
+            <a href="/admin_company_jobs/<%=company[i].company_id%>" class="company-link">
+                <p class="company-name"><%= company[i].name %></p>
+            </a>
+            <form action="/admin_company_delete/<%=company[i].company_id%>" method="get">
+                <button type="submit" class="ro"><i class="fas fa-trash"></i></button>
+            </form>
+            </div>
+        <%}}%>     
+    
+        </div>
         
+        <div class="two">
+        <% if(locals.jobs){%>
+        <%for(var i=0;i<jobs.length;i++){%>   
+            <div class="three">
+                <p><strong>Role:</strong> <%= jobs[i].roles %></p>
+                <p><strong>CTC:</strong> <%= jobs[i].ctc %> lakhs</p>
+                <p><strong>Minimum CPI:</strong> <%= jobs[i].minimum_cpi %></p>
+                <p><strong>Interview Mode:</strong> <%= jobs[i].interview_mode %></p>
+                <form action="/admin_job_delete/<%= jobs[i].jobid %>" method="get">
+                        <button type="submit">delete</button>
+                    </form>
+            </div>
+        <%}%>
+    <%}%>
+        </div>
+        </div>
+        
+
 
 </body>
 </html>

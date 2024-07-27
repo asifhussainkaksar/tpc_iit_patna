@@ -218,11 +218,11 @@ app.post("/admin_stats",requireLogin, requireRole("admin"), async (req, res) =>{
                 SELECT AVG(max_package) AS average_package
                 FROM max_package_per_student;`,[branch]);
     }
-        var total_students = total.rows[0].total_students;
-        var placed_students = placed.rows[0].placed_students;
-        var highest_package = max_package.rows[0].highest_package;
-        var lowest_package = min_package.rows[0].lowest_package;
-        var average_package = avg_package.rows[0].average_package;
+        var total_students = total.rows[0].total_students || 0;
+        var placed_students = placed.rows[0].placed_students || 0;
+        var highest_package = max_package.rows[0].highest_package || 0;
+        var lowest_package = min_package.rows[0].lowest_package || 0;
+        var average_package = avg_package.rows[0].average_package || 0;
         
         res.render("admin_home.ejs", {
             z: 1,
@@ -313,6 +313,55 @@ app.post("/admin_add_company",requireLogin, requireRole("admin"), async (req, re
         }
         });
 });
+
+
+app.post("/admin_delete_student/:id", requireLogin, requireRole("admin"), async (req, res)=>{
+    var id = req.params.id;
+    //console.log("my name is khan");
+    await db.query("delete from students where id = $1",[id]);
+    await db.query("delete from student_password where id=$1",[id]);
+    res.redirect("/admin_students");
+});
+
+
+
+app.get("/admin_company",requireLogin, requireRole("admin"), async (req, res)=>{
+    var y = await db.query("select * from company_credentials");
+    res.render("admin_home.ejs",{company : y.rows});
+});
+
+
+app.get("/admin_company_jobs/:id",requireLogin, requireRole("admin"), async (req, res) =>{
+    var company_id=req.params.id;
+    //console.log(id);
+    var z = await db.query("select * from company where company_id=$1",[company_id]);
+    var result=z.rows;
+    var x = await db.query("select * from company_credentials");
+
+    //console.log(max_pack);
+    res.render("admin_home.ejs", {jobs : result, company: x.rows});
+});
+
+
+app.get("/admin_company_delete/:id",requireLogin, requireRole("admin"), async (req, res) =>{
+    var company_id=req.params.id;
+    //console.log(company_id);
+    await db.query("delete from company_credentials where company_id=$1",[company_id]);
+    res.redirect("/admin_company");
+});
+
+
+app.get("/admin_job_delete/:id",requireLogin, requireRole("admin"), async (req, res) =>{
+    var job_id=req.params.id;
+    //console.log(job_id);
+    await db.query("delete from company where jobid=$1",[job_id]);
+    res.redirect("/admin_company");
+});
+
+
+
+
+
 
 
 

@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/styles/student.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-    <div class="student_home">
+    
+
+    <div class="topnav" id="myTopnav">
         <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
         <a href="/student_profile">profile</a>
         <a href="/student_company" >companies</a>
@@ -17,7 +20,25 @@
         <a href="/student_offers">offers recieved</a>
         <a href="/student_forget">Change Password</a>
         <a href="/log_out">Log out</a>
-        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      
+      <script>
+        function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+        }
+      </script>
+
+
+
+    
         
         <% if(locals.student) {%> 
             <%for(var i=0; i<student.length; i++){ %>
@@ -55,6 +76,7 @@
         
         <div class="two">
         <% if(locals.jobs){%>
+        <h2>Jobs</h2>
         <%for(var i=0;i<jobs.length;i++){%>   
             <div class="three">
                 <p><strong>Role:</strong> <%= jobs[i].roles %></p>
@@ -66,11 +88,13 @@
                         <button class="update-button" type="submit">Apply</button>
                     </form>
                 <% } else if (jobs[i].ctc < max_pack + 5) { %>
-                    <p class="not-eligible">Not eligible</p>
-                    <p>Your current package is more than the job's package</p>
+                    <div class="not_eligible">
+                    <p >Not eligible</p>
+                    <p >Your current package is more than the job's package</p>
+                    </div>
                 <% } else { %>
                     <p class="not-eligible">Not Eligible</p>
-                    <p>Your CPI is less than the required CPI</p>
+                    <p class="not-eligible">Your CPI is less than the required CPI</p>
                 <% } %>
             </div>
         <%}%>
