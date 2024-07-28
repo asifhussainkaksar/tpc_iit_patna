@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import pg from "pg";
-import bcrypt, { hash } from "bcrypt";
+import bcrypt from 'bcryptjs';
 import session from "express-session";
 import dotenv from "dotenv";
 dotenv.config();
