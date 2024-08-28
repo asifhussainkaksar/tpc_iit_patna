@@ -74,6 +74,16 @@
 
 
         <%if(locals.add_student){%>
+
+            <%if(locals.tu){%>
+                <p class="error-message"><%= tu %></p>
+            <%}%>
+
+            <%if(locals.err){%>
+                <p class="error-message"><%= err %></p>
+            <%}%>
+
+
             <form action="/admin_add_student" method="POST" class="student-form">
                 <div class="form-group">
                     <label for="name" class="form-label">Name:</label>
@@ -124,6 +134,10 @@
         <%if(locals.add_company){%>
             <% if (locals.err) { %>
                 <p class="error-message"><%= err %></p>
+            <% } %>
+
+            <% if (locals.too) { %>
+                <p class="error-message"><%= too %></p>
             <% } %>
         
             <form action="/admin_add_company" method="POST" class="student-form">

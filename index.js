@@ -162,7 +162,7 @@ app.post("/admin_add_student",requireLogin, requireRole("admin"), async (req, re
             [student.name, student.email, hash, 21, 1234567891, student.specialisation,
             student.semester, 75, 74, student.CPI, student.year, "No"]
             );
-            res.render("home.ejs");
+            res.render("admin_home.ejs",{add_student:1, tu:"student added successfully"});
         }
       });
     
@@ -296,7 +296,7 @@ app.post("/admin_add_company",requireLogin, requireRole("admin"), async (req, re
     
     var y = await db.query("select * from company_credentials where email=$1",[company.email]);
     if(y.rows.length>0){
-        return res.render("admin_home.ejs", {err : "email already exist"});
+        return res.render("admin_home.ejs", {err : "email already exist", add_company : 1});
     }
     
     var password = company.name;
@@ -310,7 +310,7 @@ app.post("/admin_add_company",requireLogin, requireRole("admin"), async (req, re
         await db.query(`insert into company_credentials
             (email, password, name) values ($1,$2,$3)`,
             [company.email,hash,company.name]);
-            res.render("home.ejs");
+            res.render("admin_home.ejs",{add_company : 1, too:"company_added successfully"});
         }
         });
 });
