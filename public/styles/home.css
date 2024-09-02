@@ -85,7 +85,15 @@
 .main{
     display: block;
     margin: auto;
+    height: 500px;
 }
+
+@media screen and (max-width: 600px) {
+  .main{
+    height:200px;
+  }
+}
+
 .logo{
     height:40px;
     border-radius:50%;
