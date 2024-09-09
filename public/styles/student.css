@@ -15,7 +15,6 @@ flex-direction:column;
 align-items: center;
 }
 
-
 .three{
 width:60%;
 background-color: #ffffff;
@@ -28,6 +27,20 @@ padding-bottom:10px;
 }
 
 
+@media (max-width:600px){
+  .more{
+      width: 100%;
+  }
+  .one{
+      width: 35%;
+  }
+  .two{
+    width: 65%;
+  }
+  .three{
+    width:95%;
+  }
+}
 
 
 .student-profile {
