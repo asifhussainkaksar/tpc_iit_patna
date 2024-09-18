@@ -231,6 +231,21 @@ background-color: #4cae4c;
     padding-bottom:10px;
     }
 
+    @media (max-width:600px){
+      .more{
+          width: 100%;
+      }
+      .one{
+          width: 35%;
+      }
+      .two{
+        width: 65%;
+      }
+      .three{
+        width:95%;
+      }
+    }
+
 
     .company-heading {
         font-size: 24px;
