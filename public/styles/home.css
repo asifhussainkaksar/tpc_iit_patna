@@ -99,9 +99,12 @@
     border-radius:50%;
 }
 h1{
+    margin:30px;
     text-align:center;
-    margin-top:40px;
-    margin-bottom:40px;
+    font-family: "Noto Serif Old Uyghur", serif;
+      font-weight: 1000px;
+    
+    
 }
 h2{
     margin-top:1px;
@@ -111,7 +114,12 @@ h2{
 
 
 
-
+#carouselMaterialStyle{
+width: 80%;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+}
 
 
 
@@ -151,6 +159,7 @@ h2{
     float: left;
     height: 40px; 
     border-radius: 50%;
+
 }
   
   /* Hide the link that should open and close the topnav on small screens */

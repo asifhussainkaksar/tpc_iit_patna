@@ -7,14 +7,14 @@ import session from "express-session";
 import dotenv from "dotenv";
 dotenv.config();
 const app=express();
-const port= process.env.PORT || 3000;
+const port= 3000;
 const saltRounds=5;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-const db = new pg.Pool({
+/*const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
@@ -22,7 +22,18 @@ const db = new pg.Pool({
 });
 db.connect()
 .then(() => console.log("Connected to the database"))
-  .catch(err => console.error("Connection error", err.stack));
+  .catch(err => console.error("Connection error", err.stack));*/
+
+
+  const db = new pg.Client({
+   user: "postgres",
+   host: "localhost",
+   database: "tpc",
+   password: "stewardesses",
+   port: 5432,
+});
+
+db.connect();
 
 
 
