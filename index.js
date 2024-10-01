@@ -36,6 +36,17 @@ db.connect()
 db.connect();
 
 
+/*const db = new pg.Client({
+    user: "postgres",
+    host: "localhost",
+    database: "permalist",
+    password: "Qwert..",
+    port: 5432,
+ });
+
+ db.connect();
+ */
+
 
 app.use(session({
     secret: 'secret', // Change this to a more secure random string in production
