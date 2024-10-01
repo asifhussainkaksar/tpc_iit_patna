@@ -10,6 +10,8 @@
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+       <!-- Bootstrap CSS for Carousel-->
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,21 +43,29 @@
 
         
         <%if(locals.e){%>
-            <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel"
-                style="width: 80%; display: block; margin: auto ;margin-top: 20px">
+            <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <!-- Inner -->
                 <div id="carousel-inner" class="carousel-inner rounded-5 shadow-4-strong">
                     <div class="carousel-item active">
-                        <img src="assets/img.jpg" class="d-block w-100" alt="Image 1"
-                            style=" display: block; margin: auto; height: 500px;">
+                        <img src="assets/admin-block.jpg" class="d-block w-100" alt="Image 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/helipad.jpg" class="d-block w-100" alt="Image 2"
-                            style=" display: block; margin: auto; height: 500px;">
+                        <img src="assets/helipad.jpg" class="d-block w-100" alt="Image 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/droneview.jpg" class="d-block w-100" alt="Image 3"
-                            style=" display: block; margin: auto; height: 500px;">
+                        <img src="assets/droneview1.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/droneview2.png" class="d-block w-100" alt="Image 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/plane.png" class="d-block w-100" alt="Image 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/iitpname.jpg" class="d-block w-100" alt="Image 6">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/ic.png" class="d-block w-100" alt="Image 7">
                     </div>
                 </div>
             
@@ -72,9 +82,10 @@
                 </button>
             </div>
             
-            
             <!-- Bootstrap JS (required for carousel functionality) -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+                 
         <%}%>
 
 

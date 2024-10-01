@@ -48,9 +48,9 @@
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex flex-shrink-0 items-center">
-                    <img class="h-10 w-auto"
+                    <a href="/"> <img class="h-10 w-auto"
                         src="assets/logo1.png"
-                        alt="College logo">
+                        alt="College logo"> </a>
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
@@ -99,9 +99,9 @@
 
     <% if (locals.z) { %>
         <% if (z == 1) { %> 
-            <h1 style="margin: 15px;">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
             <div class="login-container">
-                <h2>Student Login</h2>
+                <h2 class="text-2xl">Student Login</h2>
                 <form action="/student_login" method="POST">  
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
@@ -109,9 +109,9 @@
                 </form>
             </div>
         <% } else if (z == 2) { %> 
-            <h1 style="margin: 15px;">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
             <div class="login-container">
-                <h2>Company Login</h2>
+                <h2 class="text-2xl">Company Login</h2>
                 <form action="/company_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
@@ -119,9 +119,9 @@
                 </form>
             </div>
         <% } else if (z == 3) { %> 
-            <h1 style="margin: 15px;">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
             <div class="login-container">
-                <h2>Alumni Login</h2>
+                <h2 class="text-2xl">Alumni Login</h2>
                 <form action="/alumni_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
@@ -130,9 +130,9 @@
                 <a href="/alumni_form" >register</a>
             </div>
         <% } else if (z == 4) { %> 
-            <h1 style="margin: 15px;">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
             <div class="login-container">
-                <h2>Admin Login</h2>
+                <h2 class="text-2xl">Admin Login</h2>
                 <form action="/admin_login" method="POST">                   
                     <input type="text" id="email" name="email" placeholder="Email" required>               
                     <input type="password" id="password" name="password" placeholder="password" required>

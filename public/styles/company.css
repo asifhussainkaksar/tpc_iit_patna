@@ -206,7 +206,14 @@ cursor: pointer;
 background-color: #4cae4c;
 }
 
-
+    /* tailwind css for carousel */
+    #carouselMaterialStyle{
+      width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: 15px;
+      }
+      
 
 
 
