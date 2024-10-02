@@ -14,7 +14,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 /* For Rendering on Render */
-/*
+
 const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -24,9 +24,10 @@ const db = new pg.Pool({
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
-*/
+
 
 /*For local host of Manish */
+/*
 const db = new pg.Client({
     user: "postgres",
     host: "localhost",
@@ -36,7 +37,7 @@ const db = new pg.Client({
  });
 
  db.connect();
- 
+ */
 
 
 app.use(session({
