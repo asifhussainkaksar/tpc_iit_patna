@@ -7,7 +7,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 dotenv.config();
 const app=express();
-const port= process.env.PORT || 3000;
+const port= 3000;
 const saltRounds=5;
 
 app.use(express.static("public"));
@@ -25,6 +25,7 @@ db.connect()
   .catch(err => console.error("Connection error", err.stack));
 */
 
+<<<<<<< HEAD
 const db = new pg.Client({
     user: "postgres",
     host: "localhost",
@@ -35,6 +36,21 @@ const db = new pg.Client({
 
  db.connect();
  
+=======
+/*
+  const db = new pg.Client({
+   user: "postgres",
+   host: "localhost",
+   database: "tpc",
+   password: "stewardesses",
+   port: 5432,
+});
+
+db.connect();
+*/
+
+
+>>>>>>> cbf670fd0b36e9834e198d3d4693fd60e69d172e
 
 
 app.use(session({

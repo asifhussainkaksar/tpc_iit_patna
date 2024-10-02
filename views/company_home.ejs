@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/styles/company.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
+        <!-- Bootstrap CSS for Carousel-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
     
@@ -39,7 +42,7 @@
 
     
     <%if(locals.company_name){%>
-        <h2>Welcome <%=company_name%></h2>
+      
     <%}%>
 
     <% if (locals.job1) { %>
@@ -181,7 +184,48 @@
 
 
     <%if(locals.e){%>
-        <img class="main" src="https://www.iitp.ac.in/images/photo/incubation-center-top.jpg" >
+        <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <!-- Inner -->
+            <div id="carousel-inner" class="carousel-inner rounded-5 shadow-4-strong">
+                <div class="carousel-item active">
+                    <img src="assets/admin-block.jpg" class="d-block w-100" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/helipad.jpg" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/droneview1.jpg" class="d-block w-100" alt="Image 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/droneview2.png" class="d-block w-100" alt="Image 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/plane.png" class="d-block w-100" alt="Image 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/iitpname.jpg" class="d-block w-100" alt="Image 6">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/ic.png" class="d-block w-100" alt="Image 7">
+                </div>
+            </div>
+        
+            <!-- Controls -->
+            <button id="prev-btn" class="carousel-control-prev" type="button" data-bs-target="#carouselMaterialStyle"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button id="next-btn" class="carousel-control-next" type="button" data-bs-target="#carouselMaterialStyle"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+        <!-- Bootstrap JS (required for carousel functionality) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <%}%>
 
 
