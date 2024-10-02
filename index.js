@@ -1034,5 +1034,5 @@ app.get("/log_out", (req, res) => {
 
 
 app.listen(port, (req,res)=>{
-    console.log(`i am listening in port ${port}`);
+    console.log(`http://localhost:${port}`);
 });
