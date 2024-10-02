@@ -14,7 +14,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-/*const db = new pg.Pool({
+const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
@@ -22,9 +22,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 });
 db.connect()
 .then(() => console.log("Connected to the database"))
-  .catch(err => console.error("Connection error", err.stack));*/
+  .catch(err => console.error("Connection error", err.stack));
 
-
+/*
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
@@ -34,18 +34,9 @@ db.connect()
 });
 
 db.connect();
+*/
 
 
-/*const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "permalist",
-    password: "Qwert..",
-    port: 5432,
- });
-
- db.connect();
- */
 
 
 app.use(session({
