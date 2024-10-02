@@ -26,19 +26,32 @@ db.connect()
   .catch(err => console.error("Connection error", err.stack));
 */
 
+<<<<<<< HEAD
+const db = new pg.Client({
+    user: "postgres",
+    host: "localhost",
+    database: "tpc",
+    password: "Qwert..",
+    port: 5432,
+ });
 
+ db.connect();
+ 
+=======
+/*
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
    database: "tpc",
-   password: "Qwert..",
+   password: "stewardesses",
    port: 5432,
 });
 
 db.connect();
+*/
 
 
-
+>>>>>>> cbf670fd0b36e9834e198d3d4693fd60e69d172e
 
 
 app.use(session({
@@ -1036,5 +1049,5 @@ app.get("/log_out", (req, res) => {
 
 
 app.listen(port, (req,res)=>{
-    console.log(`http://localhost:${port}`);
+    console.log(`i am listening in port ${port}`);
 });
