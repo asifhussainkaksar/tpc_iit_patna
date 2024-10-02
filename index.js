@@ -26,7 +26,7 @@ db.connect()
   .catch(err => console.error("Connection error", err.stack));
 
 
-/*For local host of Manish */
+/*For local host of Manish's Laptop*/
 /*
 const db = new pg.Client({
     user: "postgres",
@@ -37,6 +37,7 @@ const db = new pg.Client({
  });
 
  db.connect();
+ 
  */
 
 
