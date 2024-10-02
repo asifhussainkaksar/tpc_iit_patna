@@ -1,4 +1,9 @@
 /* Login container styling */
+
+#iitp-logo{
+  border-radius:50%;
+}
+
 .login-container {
     max-width: 380px;
     margin: 20px auto;

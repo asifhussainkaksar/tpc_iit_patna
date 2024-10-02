@@ -13,7 +13,7 @@ const saltRounds=5;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
-
+/*
 const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -23,18 +23,18 @@ const db = new pg.Pool({
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
+*/
 
-
-/*const db = new pg.Client({
+const db = new pg.Client({
     user: "postgres",
     host: "localhost",
-    database: "permalist",
+    database: "tpc",
     password: "Qwert..",
     port: 5432,
  });
 
  db.connect();
- */
+ 
 
 
 app.use(session({
