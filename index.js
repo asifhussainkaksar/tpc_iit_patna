@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 /* For Rendering on Render */
 
-/*const db = new pg.Pool({
+const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
-  */
+  
 
 
 /*For local host of Manish's Laptop*/
@@ -39,7 +39,7 @@ const db = new pg.Client({
  });
 */
 
-
+/*
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
@@ -49,7 +49,7 @@ const db = new pg.Client({
 });
 
  db.connect();
-
+*/
 
 
 
