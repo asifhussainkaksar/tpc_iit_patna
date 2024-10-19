@@ -106,7 +106,6 @@
 </script>
 
 
-        
         <%if(locals.e){%>
             <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <!-- Inner -->
@@ -154,6 +153,10 @@
         <%}%>
 
 
+
+
+
+
         <% if (locals.z) { %>
             <form action="/admin_stats" method="post" class="branch-form">
                 <label for="specialisation" class="branch-form-label">Branch:</label>
@@ -184,16 +187,8 @@
         
 
 
-        <%if(locals.add_student){%>
 
-            <%if(locals.tu){%>
-                <p class="error-message"><%= tu %></p>
-            <%}%>
-
-            <%if(locals.err){%>
-                <p class="error-message"><%= err %></p>
-            <%}%>
-
+        <%if(locals.add_student){%>       
 
             <form action="/admin_add_student" method="POST" class="student-form">
                 <div class="form-group">
@@ -234,22 +229,28 @@
                     <input type="number" id="year" name="year" class="form-input" required>
                 </div>
         
-                <div class="form-group">
+                <div class="form-group" id="agb">
                     <input type="submit" value="Submit" class="submit-button">
                 </div>
             </form>
+            
+            
+    <script>
+        let button2 = document.querySelector("#agb");
+        button2.addEventListener('click', () => {
+            alert("Student Added Successfully");
+        });
+    </script>
+            
+            
+            
+
         <%}%>
 
 
 
         <%if(locals.add_company){%>
-            <% if (locals.err) { %>
-                <p class="error-message"><%= err %></p>
-            <% } %>
-
-            <% if (locals.too) { %>
-                <p class="error-message"><%= too %></p>
-            <% } %>
+            
         
             <form action="/admin_add_company" method="POST" class="student-form">
                 <div class="form-group">
@@ -262,10 +263,20 @@
                     <input type="text" id="name" name="name" class="form-input">
                 </div>
                 
-                <div class="form-group">
-                    <button type="submit" class="submit-button">Register</button>
+                <div class="form-group" >
+                    <button type="submit" class="submit-button" id="aga">Register</button>
                 </div>
             </form>
+            
+            <script>
+                let button3 = document.querySelector("#aga");
+                button3.addEventListener('click', () => {
+                    alert("Company Added Successfully");
+                });
+            </script>
+                    
+                    
+                  
         <%}%>
 
 
