@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 /* For Rendering on Render */
 
-const db = new pg.Pool({
+/*const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
@@ -25,7 +25,7 @@ const db = new pg.Pool({
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
-  
+  */
 
 
 /*For local host of Manish's Laptop*/
@@ -39,7 +39,7 @@ const db = new pg.Client({
  });
 */
 
-/*
+
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
@@ -49,7 +49,7 @@ const db = new pg.Client({
 });
 
  db.connect();
-*/
+
 
 
 
@@ -529,12 +529,12 @@ app.get("/student_apply/:id1/:id2",requireLogin, requireRole("student"), async(r
 
     var z= await db.query("select * from student_applied where student_id=$1 and company_id=$2 and job_id=$3",[student_id, company_id, job_id]);
     if(z.rows.length>0){
-        res.send("you has already applied for the job");
+        res.redirect("/student_company_jobs/"+company_id);
     }
     else{
         await db.query(`insert into student_applied (student_id, company_id, job_id)
             values ($1,$2,$3)`,[student_id, company_id, job_id]);
-        res.send("applied successfully");
+        res.redirect("/student_company_jobs/"+company_id);
     }
 
 });
