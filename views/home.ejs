@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placement Portal</title>
+    <!--Adding External CSS-->
     <link rel="stylesheet" href="/styles/home.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -101,7 +102,7 @@
                 <form action="/student_login" method="POST">  
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
         <% } else if (z == 2) { %> 
@@ -111,7 +112,7 @@
                 <form action="/company_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
         <% } else if (z == 3) { %> 
@@ -121,9 +122,9 @@
                 <form action="/alumni_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
-                <a href="/alumni_form" >register</a>
+             <!--   <a href="/alumni_form" >Register</a>    -->
             </div>
         <% } else if (z == 4) { %> 
             <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
@@ -132,7 +133,7 @@
                 <form action="/admin_login" method="POST">                   
                     <input type="text" id="email" name="email" placeholder="Email" required>               
                     <input type="password" id="password" name="password" placeholder="password" required>
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
 
             </div>
