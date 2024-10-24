@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 /* For Rendering on Render */
-/*
+
 const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -37,11 +37,11 @@ const db = new pg.Pool({
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
-*/
 
 
 
 
+/*
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
@@ -51,7 +51,7 @@ db.connect()
 });
 
  db.connect();
-
+*/
 
 
 
