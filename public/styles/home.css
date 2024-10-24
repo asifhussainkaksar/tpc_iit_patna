@@ -122,10 +122,20 @@ h2{
 
 
 #carouselMaterialStyle{
-width: 80%;
+  width: 80%;
   display: block;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px){
+    #carouselMaterialStyle{
+        width: 95%;
+        display: block;
+        margin: auto;
+        margin-top: 50px;
+        height:800px;
+      }
 }
 
 .glow-on-hover {

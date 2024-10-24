@@ -98,7 +98,7 @@
 
     <% if (locals.z) { %>
         <% if (z == 1) { %> 
-            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
+            <h1 id="animated-heading" class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Student Login</h2>
                 <form action="/student_login" method="POST">  
@@ -107,8 +107,32 @@
                     <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+            
         <% } else if (z == 2) { %> 
-            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
+            <h1 id="animated-heading1" class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Company Login</h2>
                 <form action="/company_login" method="POST">
@@ -117,8 +141,33 @@
                     <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
+
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading1');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+
         <% } else if (z == 3) { %> 
-            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
+            <h1 id="animated-heading2" class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Alumni Login</h2>
                 <form action="/alumni_login" method="POST">
@@ -128,8 +177,32 @@
                 </form>
              <!--   <a href="/alumni_form" >Register</a>    -->
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading2');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+
         <% } else if (z == 4) { %> 
-            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
+            <h1 id="animated-heading4" class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Admin Login</h2>
                 <form action="/admin_login" method="POST">                   
@@ -137,11 +210,34 @@
                     <input type="password" id="password" name="password" placeholder="password" required>
                     <button class="glow-on-hover" type="submit">Login</button>
                 </form>
-
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading4');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+
         <% } %>
     <% }else{%>
-        
+        <h1 id="animated-heading3" class="text-3xl font-bold text-black mt-3">Training and placement cell IIT Patna</h1>
         <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <!-- Inner -->
             <div id="carousel-inner" class="carousel-inner rounded-5 shadow-4-strong">
@@ -180,10 +276,38 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const heading = document.getElementById('animated-heading3');
+            const text = heading.innerText;
+            heading.innerText = ''; // Clear original text
+            
+            // Split the text into spans
+            for(var i=0;i<text.length;i++){
+            const span = document.createElement('span');
+            var char=text[i];
+            span.innerText = char;
+            span.style.opacity = '0';
+            heading.appendChild(span);
+        
+            // Animate each letter one by one
+            setTimeout(() => {
+            span.style.opacity = '1';
+            }, i * 100); // Adjust timing as per your need
+            };
+        
+            });
+        </script>
         
         <!-- Bootstrap JS (required for carousel functionality) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <%}%>
+
+
+    <!--Adding Text Animation when home.ejs appear for the first time-->
+
 
 
 </body>
