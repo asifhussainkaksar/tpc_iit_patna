@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 /* For Rendering on Render */
-
+/*
 const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -37,21 +37,21 @@ const db = new pg.Pool({
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
+*/
 
 
 
 
-/*
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
    database: "tpc",
-   password: "stewardesses",
+   password: "Qwert..",
    port: 5432,
 });
 
  db.connect();
-*/
+
 
 
 
@@ -272,7 +272,7 @@ GET request to "/admin_students" endpoint. */
 
 app.get("/admin_students",requireLogin, requireRole("admin"), async (req, res)=>{
     var y = await db.query("select * from students");
-    var z = await db.query(`SELECT s.id As id, s.photo as photo, s.name AS student_name,s.email AS student_email,
+    var z = await db.query(`SELECT s.id, s.photo, s.name AS student_name,s.email AS student_email,
     s.specialisation AS student_specialisation,c.company_name,c.ctc,c.roles
     FROM placed p JOIN students s ON p.student_id = s.id
     JOIN company c ON p.job_id = c.jobid
