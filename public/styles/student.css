@@ -485,3 +485,23 @@ background-color: #4cae4c;
 }
 
 
+
+.foo{
+  width: 60px; /* Example width */
+  height: 60px; /* Example height */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.we{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#kxt{
+  width:120px;
+  height:40px;
+  margin-left:0px;
+  margin-top:10px;
+}

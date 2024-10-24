@@ -334,7 +334,14 @@
                 <%if(total_student.length>0){
                 for(var i=0;i<total_student.length;i++){%>
                     <div class="none">
-                    <p><strong>Name: </strong><%= total_student[i].name %></p>
+                        <div class="we">
+                    <%if(total_student[i].photo===null){%>
+                        <img class="foo" src="/assets/images.png" />
+                    <%}else{%>
+                        <img class="foo" src="/image/<%= total_student[i].id %>" />
+                    <%}%>
+                    </div>
+                    <p><strong>Name: </strong> <%= total_student[i].name %> </p>
                     <p><strong>Email: </strong><%= total_student[i].email %></p>
                     <p><strong>Branch: </strong><%= total_student[i].specialisation %></p>
                     <p><strong>Mobile no:</strong><%= total_student[i].mobile%></p>
@@ -355,6 +362,13 @@
                 <%if(placed_student.length>0){
                 for(var i=0;i<placed_student.length;i++){%>
                     <div class="none">
+                        <div class="we">
+                    <%if(placed_student[i].photo===null){%>
+                        <img class="foo" src="/assets/images.png" />
+                    <%}else{%>
+                        <img class="foo" src="/image/<%= placed_student[i].id %>" />
+                    <%}%>
+                    </div>
                     <p><strong>Name: </strong> <%= placed_student[i].student_name %> </p>
                     <p><strong>Email: </strong> <%= placed_student[i].student_email %> </p>
                     <p><strong>Branch: </strong> <%= placed_student[i].student_specialisation %> </p>

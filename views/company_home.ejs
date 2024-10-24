@@ -159,6 +159,13 @@
 
             <% for (var i = 0; i < student.length; i++) { %>
                 <div class="three">
+                    <div class="we">
+                        <%if(student[i].photo===null){%>
+                            <img class="foo" src="/assets/images.png" />
+                        <%}else{%>
+                            <img class="foo" src="/image/<%= student[i].id %>" />
+                        <%}%>
+                        </div>
                     <p><strong>Name:</strong> <%= student[i].name %></p>
                     <p><strong>Email:</strong> <%= student[i].email %></p>
                     <p><strong>Mobile no:</strong> <%= student[i].mobile %></p>
@@ -206,6 +213,13 @@
         if (selected.length > 0) {
             for (var i = 0; i < selected.length; i++) { %>
                 <div class="jobs_applied">
+                    <div class="we">
+                    <%if(selected[i].photo===null){%>
+                        <img class="foo" src="/assets/images.png" />
+                    <%}else{%>
+                        <img class="foo" src="/image/<%= selected[i].id %>" />
+                    <%}%>
+                    </div>
                     <p><strong>Name:</strong> <%= selected[i].name %></p>
                     <p><strong>Email:</strong> <%= selected[i].email %></p>
                     <p><strong>Branch:</strong> <%= selected[i].specialisation %></p>

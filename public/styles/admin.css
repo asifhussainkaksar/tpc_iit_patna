@@ -497,3 +497,17 @@ background-color: #4cae4c;
   margin-top: 10px;
 }
 
+
+
+.foo{
+  width: 60px; /* Example width */
+  height: 60px; /* Example height */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.we{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}

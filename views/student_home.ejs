@@ -101,12 +101,24 @@
 <!--Nav Bar ends-->
 
 
+
+
+
+
     
         
         <% if(locals.student) {%> 
             <%for(var i=0; i<student.length; i++){ %>
                 <div class="student-profile">
-                    <p class="profile-info"><strong>Name:</strong> <%= student[i].name %></p>
+
+                    <div class="we">
+                    <%if(student[i].photo===null){%>
+                        <img class="foo" src="/assets/images.png" />
+                    <%}else{%>
+                        <img class="foo" src="/image/<%= student[i].id %>" />
+                    <%}%>
+                    <p><strong><%= student[i].name %> </strong> </p>
+                    </div> 
                     <p class="profile-info"><strong>Email:</strong> <%= student[i].email %></p>
                     <p class="profile-info"><strong>Mobile No:</strong> <%= student[i].mobile %></p>
                     <p class="profile-info"><strong>Semester:</strong> <%= student[i].semester %></p>
@@ -116,9 +128,12 @@
                     <p class="profile-info"><strong>Class 12th Percentage:</strong> <%= student[i].percentage12 %></p>
                     <p class="profile-info"><strong>CPI:</strong> <%= student[i].cpi %></p>
                     <p class="profile-info"><strong>Placed:</strong> <%= student[i].placed %></p>
+
                     <form class="profile-update-form" action="/student_update_profile">
                         <button class="glow-on-hover" type="submit" class="update-button">Update Profile</button>
                     </form>
+                    
+
                 </div>
             <% }%> 
         <%}%>
@@ -212,8 +227,25 @@
     
     
         <% if (locals.z) { %>
-    <form action="/student_update_profile" method="POST" class="update-form">
+        
+        <div class="update-form">
 
+    <form style="margin-bottom:10px; margin-top:10px" class="update-form" action="/photo_upload" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="userId" value="<%= stud.id %>">
+        <input  type="file" id="profilePhoto" name="profilePhoto" accept="image/*" required>
+        <button class="glow-on-hover" type="submit" id="kxt">Upload Photo</button>
+    </form>
+    
+    <script>
+        let button2 = document.querySelector("#kxt");
+        button2.addEventListener('click', () => {
+            alert("Photo uploaded successfully");
+        });
+    </script>
+
+
+
+    <form action="/student_update_profile" method="POST" >
         <div class="form-group">
             <label for="age" class="form-label">Age:</label>
             <input type="number" id="age" name="age" value="<%= stud.age %>" class="form-input" required>
@@ -239,9 +271,12 @@
             <input type="text" id="placed" name="placed" maxlength="3" value="<%= stud.placed %>" class="form-input" required>
         </div>
 
+
         <div class="form-group">
             <button class="glow-on-hover" class="submit-button">Submit</button>
         </div>
+
+    </div>
     </form>
 <% } %>
 

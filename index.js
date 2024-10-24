@@ -6,16 +6,28 @@ import pg from "pg";
 import bcrypt from 'bcryptjs';
 import session from "express-session";
 import dotenv from "dotenv";
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from 'url'; 
+import http from "http";
+import fs from "fs"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 dotenv.config();
 const app=express();
 const port= 3000;
 const saltRounds=5;
 
+const upload = multer({ dest: 'uploads/' });
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 /* For Rendering on Render */
-
+/*
 const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -25,11 +37,11 @@ const db = new pg.Pool({
 db.connect()
 .then(() => console.log("Connected to the database"))
   .catch(err => console.error("Connection error", err.stack));
+*/
 
 
 
 
-/*
   const db = new pg.Client({
    user: "postgres",
    host: "localhost",
@@ -39,7 +51,7 @@ db.connect()
 });
 
  db.connect();
-*/
+
 
 
 
@@ -257,9 +269,10 @@ app.post("/admin_stats",requireLogin, requireRole("admin"), async (req, res) =>{
 
 /* The above code is a route handler in a Node.js application using Express framework. It is handling a
 GET request to "/admin_students" endpoint. */
+
 app.get("/admin_students",requireLogin, requireRole("admin"), async (req, res)=>{
     var y = await db.query("select * from students");
-    var z = await db.query(`SELECT s.name AS student_name,s.email AS student_email,
+    var z = await db.query(`SELECT s.id As id, s.photo as photo, s.name AS student_name,s.email AS student_email,
     s.specialisation AS student_specialisation,c.company_name,c.ctc,c.roles
     FROM placed p JOIN students s ON p.student_id = s.id
     JOIN company c ON p.job_id = c.jobid
@@ -274,7 +287,7 @@ app.post("/admin_students",requireLogin, requireRole("admin"), async (req, res)=
     var branch = req.body.specialisation;
     //console.log(branch);
     var y = await db.query("select * from students where specialisation=$1",[branch]);
-    var z = await db.query(`SELECT s.name AS student_name,s.email AS student_email,
+    var z = await db.query(`SELECT s.id As id, s.photo as photo, s.name AS student_name,s.email AS student_email,
     s.specialisation AS student_specialisation,c.company_name,c.ctc,c.roles
     FROM placed p JOIN students s ON p.student_id = s.id
     JOIN company c ON p.job_id = c.jobid
@@ -290,7 +303,7 @@ app.post("/admin_students_search",requireLogin, requireRole("admin"), async (req
     var search = "%" + req.body.search + "%";
     //console.log(branch);
     var y = await db.query("select * from students where specialisation ilike $1 or name ilike $1",[search]);
-    var z = await db.query(`SELECT s.name AS student_name,s.email AS student_email,
+    var z = await db.query(`SELECT s.id As id, s.photo as photo, s.name AS student_name,s.email AS student_email,
     s.specialisation AS student_specialisation,c.company_name,c.ctc,c.roles
     FROM placed p JOIN students s ON p.student_id = s.id
     JOIN company c ON p.job_id = c.jobid
@@ -621,7 +634,51 @@ app.post("/student_forget",requireLogin, requireRole("student"), async (req, res
 });
 
 
+app.post("/photo_upload", upload.single('profilePhoto'), requireLogin,requireRole("student"), async (req,res) =>{
+        var user_id = req.session.user_id;
+        var profilePhoto = req.file.path;
 
+        try {
+            // Read the image as binary data (Buffer)
+            const profilePhotoBinary = fs.readFileSync(profilePhoto);
+            
+            // Store the binary data in PostgreSQL
+            const result = await db.query(
+                'UPDATE students SET photo = $1 WHERE id = $2',
+                [profilePhotoBinary, user_id]
+            );
+            
+            // Redirect after successful upload
+            res.redirect("/student_update_profile");
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Error uploading photo');
+        }
+});
+
+app.get('/image/:userId', requireLogin, async (req, res) => {
+    const userId = req.params.userId;
+    //console.log(userId);
+    try {
+        // Query the image data from PostgreSQL
+        const result = await db.query('SELECT photo FROM students WHERE id = $1', [userId]);
+
+        if (result.rows.length > 0) {
+            const imageData = result.rows[0].photo;
+
+            // Set content type to image (Assuming it's a PNG/JPG, you can adjust based on actual type)
+            res.set('Content-Type', 'image/jpeg'); // or 'image/png' based on your actual image format
+
+            // Send the binary image data
+            res.send(imageData);
+        } else {
+            res.status(404).send('Image not found');
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error retrieving image');
+    }
+});
 
 
 
@@ -759,7 +816,7 @@ app.get("/company_students_applied/:id1/:id2", requireLogin, requireRole("compan
     var job_id = req.params.id2;
 
     var z = await db.query(`SELECT 
-    s.id, s.name, s.email, s.mobile, s.specialisation, s.cpi, s.percentage10, s.percentage12
+    s.id, s.name, s.photo, s.email, s.mobile, s.specialisation, s.cpi, s.percentage10, s.percentage12
     FROM students s JOIN student_applied sa
     ON s.id = sa.student_id
     WHERE sa.company_id = $1 AND sa.job_id = $2`,[company_id, job_id]);
@@ -852,7 +909,7 @@ app.get("/company_placed/:id1/:id2",requireLogin, requireRole("company"), async 
 
 app.get("/company_selected", requireLogin, requireRole("company"), async (req, res) =>{
     var company_id = req.session.user_id;
-    var y = await db.query(`select s.name, s.email, s.specialisation, s.mobile, c.roles, c.ctc
+    var y = await db.query(`select s.name, s.photo, s.id, s.email, s.specialisation, s.mobile, c.roles, c.ctc
                             from placed as p join students as s on s.id = p.student_id
                             join company as c on c.jobid = p.job_id
                             where p.company_id=$1`, [company_id]);
