@@ -164,7 +164,7 @@
                     <option value="Civil">Civil</option>
                     <option value="Metallurgy">Metallurgy</option>
                 </select>
-                <input type="submit" value="Submit" class="branch-submit-button">
+                <button class="glow-on-hover" class="branch-submit-button">Submit</button>
             </form>
         <% } %>
         
@@ -224,7 +224,7 @@
                 </div>
         
                 <div class="form-group" id="agb">
-                    <input type="submit" value="Submit" class="submit-button">
+                    <button class="glow-on-hover" type="submit" value="Submit" class="submit-button">Submit</button>
                 </div>
             </form>
             
@@ -258,7 +258,7 @@
                 </div>
                 
                 <div class="form-group" >
-                    <button type="submit" class="submit-button" id="aga">Register</button>
+                    <button class="glow-on-hover"  type="submit" class="submit-button" id="aga">Register</button>
                 </div>
             </form>
             
@@ -293,7 +293,7 @@
                     <option value="Civil">Civil</option>
                     <option value="Metallurgy">Metallurgy</option>
                 </select>
-                <input type="submit" value="Submit" class="branch-submit-button">
+                <button class="glow-on-hover" class="branch-submit-button">Submit</button>
             </form>
 
 
@@ -301,7 +301,7 @@
                 <form action="/admin_students_search" method="POST" class="search-form">
                     <label for="search" class="search-label">Search:</label>
                     <input type="text" id="search" name="search" placeholder="Search by name or branch" required class="search-input">
-                    <button type="submit" class="search-button">Submit</button>
+                    <button class="glow-on-hover" type="submit" class="search-button">Submit</button>
                 </form>
             </div>
         
@@ -323,7 +323,7 @@
                     <p><strong>10th percentage:</strong><%= total_student[i].percentage10%></p>
                     <p><strong>12th percentage</strong><%= total_student[i].percentage12%></p>
                     <form action="/admin_delete_student/<%= total_student[i].id %>" method="post">
-                        <button type="submit">delete</button>
+                        <button class="glow-on-hover" type="submit" id="delete_student">delete</button>
                     </form>
                     </div>
                 <%}}else{%>
@@ -386,7 +386,7 @@
                 <p><strong>Minimum CPI:</strong> <%= jobs[i].minimum_cpi %></p>
                 <p><strong>Interview Mode:</strong> <%= jobs[i].interview_mode %></p>
                 <form action="/admin_job_delete/<%= jobs[i].jobid %>" method="get">
-                        <button type="submit">delete</button>
+                        <button class="glow-on-hover" type="submit">delete</button>
                     </form>
             </div>
         <%}%>
