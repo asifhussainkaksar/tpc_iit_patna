@@ -378,7 +378,9 @@ app.get("/admin_job_delete/:id",requireLogin, requireRole("admin"), async (req, 
 });
 
 
-
+app.get("/admin_add_alumni", requireLogin, requireRole("admin"), async(req,res)=>{
+     res.render("alumni_form.ejs");
+});
 
 
 

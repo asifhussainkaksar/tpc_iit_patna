@@ -5,84 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placement Portal</title>
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrwkuniCAWPapvRKlKlU7wDq4ecsVvB4LBQ&s">
-    <style>
-        /* Styling for the form heading */
-.form-heading {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
+    <!-- Tailwind CSS for new Navbar -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/alumni_form.css">
 
-/* Styling for error messages */
-.error-message {
-    color: red;
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-/* Styling for the form */
-.alumni-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-/* Styling for form groups */
-.form-group {
-    margin-bottom: 20px;
-}
-
-/* Styling for form labels */
-.form-label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-/* Styling for form inputs */
-.form-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-/* Placeholder styling */
-.form-input::placeholder {
-    color: #888;
-    font-size: 16px;
-}
-
-/* Styling for the submit button */
-.submit-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-}
-
-    </style>
+    
 </head>
 <body>
-    <h2 class="form-heading">Alumni Registration Form</h2>
+
+
+<!--New Nav bar-->
+<nav class="bg-gray-800">
+    <div class="mx-auto max-w-full px-0 sm:px-0 lg:px-0"> <!-- Adjusted here -->
+        <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <button type="button"
+                    class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex flex-shrink-0 items-center">
+                    <a href="/"> <img class="h-10 w-auto" src="/assets/logo1.png" alt="College logo"> </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                        <a href="/admin_add_student "
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add
+                            Student</a>
+                        <a href="/admin_add_company"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add
+                            Company</a>
+                        <a href="admin_add_alumni"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add
+                            Alumni</a>
+                        <a href="/admin_students"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
+                        <a href="/admin_company"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Companies</a>
+                        <a href="/admin_stats"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Stats</a>
+                        <a href="/log_out"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log
+                            out</a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <div class="sm:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <a href="/admin_add_student"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add
+                Student</a>
+            <a href="/admin_add_company"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Company</a>
+            <a href="/admin_add_alumni"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Alumni</a>
+            <a href="/admin_students"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
+            <a href="/admin_company"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Companies</a>
+            <a href="/admin_stats"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Stats</a>
+            <a href="/log_out"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log
+                out</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Script for mobile menu -->
+<script>
+    const menuButton = document.querySelector('[aria-controls="mobile-menu"]');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuButton.addEventListener('click', () => {
+        const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+        menuButton.setAttribute('aria-expanded', !expanded);
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+<!--Nav bar ends-->
+
+
+
+
+
+
+
+
+
+
+
+
+
     
+    <div class="alumni_margin">
     <% if (locals.err) { %>
         <p class="error-message"><%= err %></p>
     <% } %>
@@ -134,9 +169,10 @@
         </div>
         
         <div class="form-group">
-            <button type="submit" class="submit-button">Register</button>
+            <button type="submit" class="glow-on-hover" class="submit-button">Register</button>
         </div>
     </form>
+</div>
 </body>
 
 </html>

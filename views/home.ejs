@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placement Portal</title>
+    <!--Adding External CSS-->
     <link rel="stylesheet" href="/styles/home.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,14 +55,10 @@
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <a href="/student" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                            aria-current="page">Students</a>
-                        <a href="/company"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Company</a>
-                        <a href="/alumni"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Alumni</a>
-                        <a href="/admin"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Admin</a>
+                        <a href="/student" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
+                        <a href="/company" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Company</a>
+                        <a href="/alumni"  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Alumni</a>
+                        <a href="/admin"   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Admin</a>
                     </div>
                 </div>
             </div>
@@ -72,8 +69,8 @@
 
     <div class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <a href="/student" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                aria-current="page">Students</a>
+            <a href="/student" 
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
             <a href="/company"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Company</a>
             <a href="/alumni"
@@ -99,44 +96,44 @@
 
     <% if (locals.z) { %>
         <% if (z == 1) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Student Login</h2>
                 <form action="/student_login" method="POST">  
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
         <% } else if (z == 2) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Company Login</h2>
                 <form action="/company_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
         <% } else if (z == 3) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Alumni Login</h2>
                 <form action="/alumni_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
-                <a href="/alumni_form" >register</a>
+             <!--   <a href="/alumni_form" >Register</a>    -->
             </div>
         <% } else if (z == 4) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+            <h1 class="text-3xl font-bold text-black mt-10 mb-10">Training and placement cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Admin Login</h2>
                 <form action="/admin_login" method="POST">                   
                     <input type="text" id="email" name="email" placeholder="Email" required>               
                     <input type="password" id="password" name="password" placeholder="password" required>
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
 
             </div>

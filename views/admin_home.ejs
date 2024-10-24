@@ -19,13 +19,7 @@
     
 
 
-       <!-- <a href="/admin_add_student">Add Student</a>
-        <a href="/admin_add_company">Add companies</a>
-        <a href="/admin_students">students</a>
-        <a href="/admin_company">companies</a>
-        <a href="/admin_stats">stats</a>
-        <a href="/log_out">Log out</a>
-        -->
+   
         <!--New Nav bar-->
 <nav class="bg-gray-800">
     <div class="mx-auto max-w-full px-0 sm:px-0 lg:px-0"> <!-- Adjusted here -->
@@ -55,10 +49,12 @@
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <a href="/admin_add_student " class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                            aria-current="page">Add Student</a>
+                        <a href="/admin_add_student " 
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Student</a>
                         <a href="/admin_add_company"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Company</a>
+                        <a href="admin_add_alumni" 
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Alumni</a>
                         <a href="/admin_students"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
                         <a href="/admin_company"
@@ -67,6 +63,7 @@
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Stats</a>
                         <a href="/log_out"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log out</a>
+                        
                     </div>
                 </div>
             </div>
@@ -77,8 +74,8 @@
 
     <div class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <a href="/admin_add_student" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                aria-current="page">Add Student</a>
+            <a href="/admin_add_student" 
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Student</a>
             <a href="/admin_add_company"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Add Company</a>
             <a href="/admin_students"
@@ -104,6 +101,21 @@
         mobileMenu.classList.toggle('hidden');
     });
 </script>
+
+<!--Nav bar ends-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <%if(locals.e){%>
@@ -170,7 +182,7 @@
                     <option value="Civil">Civil</option>
                     <option value="Metallurgy">Metallurgy</option>
                 </select>
-                <input type="submit" value="Submit" class="branch-submit-button">
+                <button class="glow-on-hover" class="branch-submit-button">Submit</button>
             </form>
         <% } %>
         
@@ -230,7 +242,7 @@
                 </div>
         
                 <div class="form-group" id="agb">
-                    <input type="submit" value="Submit" class="submit-button">
+                    <button class="glow-on-hover" type="submit" value="Submit" class="submit-button">Submit</button>
                 </div>
             </form>
             
@@ -264,7 +276,7 @@
                 </div>
                 
                 <div class="form-group" >
-                    <button type="submit" class="submit-button" id="aga">Register</button>
+                    <button class="glow-on-hover"  type="submit" class="submit-button" id="aga">Register</button>
                 </div>
             </form>
             
@@ -299,7 +311,7 @@
                     <option value="Civil">Civil</option>
                     <option value="Metallurgy">Metallurgy</option>
                 </select>
-                <input type="submit" value="Submit" class="branch-submit-button">
+                <button class="glow-on-hover" class="branch-submit-button">Submit</button>
             </form>
 
 
@@ -307,7 +319,7 @@
                 <form action="/admin_students_search" method="POST" class="search-form">
                     <label for="search" class="search-label">Search:</label>
                     <input type="text" id="search" name="search" placeholder="Search by name or branch" required class="search-input">
-                    <button type="submit" class="search-button">Submit</button>
+                    <button class="glow-on-hover" type="submit" class="search-button">Submit</button>
                 </form>
             </div>
         
@@ -329,7 +341,7 @@
                     <p><strong>10th percentage:</strong><%= total_student[i].percentage10%></p>
                     <p><strong>12th percentage</strong><%= total_student[i].percentage12%></p>
                     <form action="/admin_delete_student/<%= total_student[i].id %>" method="post">
-                        <button type="submit">delete</button>
+                        <button class="glow-on-hover" type="submit" id="delete_student">delete</button>
                     </form>
                     </div>
                 <%}}else{%>
@@ -392,7 +404,7 @@
                 <p><strong>Minimum CPI:</strong> <%= jobs[i].minimum_cpi %></p>
                 <p><strong>Interview Mode:</strong> <%= jobs[i].interview_mode %></p>
                 <form action="/admin_job_delete/<%= jobs[i].jobid %>" method="get">
-                        <button type="submit">delete</button>
+                        <button class="glow-on-hover" type="submit">delete</button>
                     </form>
             </div>
         <%}%>

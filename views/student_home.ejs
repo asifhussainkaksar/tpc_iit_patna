@@ -15,15 +15,7 @@
     
 
     
-   <!-- Linked to the pages
-     <a href="/student_profile">profile</a>
-        <a href="/student_company" >companies</a>
-        <a href="/jobs_applied" >jobs applied</a>
-        <a href="/student_alumni" >alumni</a>
-        <a href="/student_offers">offers recieved</a>
-        <a href="/student_forget">Change Password</a>
-        <a href="/log_out">Log out</a> 
-    -->
+
     <!--New Nav bar-->
 <nav class="bg-gray-800">
     <div class="mx-auto max-w-full px-0 sm:px-0 lg:px-0"> <!-- Adjusted here -->
@@ -53,8 +45,8 @@
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <a href="/student_profile" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                            aria-current="page">Profile</a>
+                        <a href="/student_profile" 
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Profile</a>
                         <a href="/student_company"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Companies</a>
                         <a href="/jobs_applied"
@@ -77,8 +69,8 @@
 
     <div class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <a href="/student_profile" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                aria-current="page">Profile</a>
+            <a href="/student_profile" 
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Profile</a>
             <a href="/student_company "
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Companies</a>
             <a href="/jobs_applied"
@@ -106,6 +98,7 @@
         mobileMenu.classList.toggle('hidden');
     });
 </script>
+<!--Nav Bar ends-->
 
 
     
@@ -124,7 +117,7 @@
                     <p class="profile-info"><strong>CPI:</strong> <%= student[i].cpi %></p>
                     <p class="profile-info"><strong>Placed:</strong> <%= student[i].placed %></p>
                     <form class="profile-update-form" action="/student_update_profile">
-                        <button type="submit" class="update-button">Update Profile</button>
+                        <button class="glow-on-hover" type="submit" class="update-button">Update Profile</button>
                     </form>
                 </div>
             <% }%> 
@@ -155,7 +148,7 @@
                 <p><strong>Interview Mode:</strong> <%= jobs[i].interview_mode %></p>
                 <% if (cpi >= jobs[i].minimum_cpi && jobs[i].ctc >= max_pack + 5) { %>
                     <form action="/student_apply/<%= jobs[i].jobid %>/<%= jobs[i].company_id %>" method="get">
-                        <button class="update-button" type="submit" id="rgd<%= jobs[i].jobid %>" >Apply</button>
+                        <button class="glow-on-hover" class="update-button" type="submit" id="rgd<%= jobs[i].jobid %>" >Apply</button>
                     </form>
                 <% } else if (jobs[i].ctc < max_pack + 5) { %>
                     <div class="not_eligible">
@@ -247,7 +240,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Submit" class="submit-button">
+            <button class="glow-on-hover" class="submit-button">Submit</button>
         </div>
     </form>
 <% } %>
@@ -273,7 +266,7 @@
 
 
 <%if(locals.forget_password){%>
-    <h2 class="ha">Reset Your Password</h2>
+    <div class="password_reset">
     <%if(locals.err){%>
         <p class="error-message"><%= err %></p>
     <%}%>
@@ -286,8 +279,9 @@
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" id="confirm_password" name="confirm_password" required>
         </div>
-        <button type="submit">Submit</button>
+        <button class="glow-on-hover" type="submit">Submit</button>
     </form>
+</div>
 <%}%>
 
     
