@@ -41,8 +41,8 @@ db.connect()
 
 
 
-/*
-  const db = new pg.Client({
+
+/*const db = new pg.Client({
    user: "postgres",
    host: "localhost",
    database: "tpc",
