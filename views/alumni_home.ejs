@@ -86,6 +86,24 @@
     });
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <% if(locals.profile){%>
         <div class="profile-container">
             <div class="profile-details">
@@ -105,8 +123,11 @@
     <%}%>
     
     
-    <%if(locals.alumni){
-        for(var i=0; i<alumni.length; i++){%>
+    
+
+    <%if(locals.alumni){%>
+        
+        <%for(var i=0; i<alumni.length; i++){%>
             <div class="alumni-card">
                 <p><strong>Name:</strong> <%= alumni[i].name %></p>
                 <p><strong>Email:</strong> <%= alumni[i].email %></p>

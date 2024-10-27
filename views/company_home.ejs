@@ -97,11 +97,25 @@
 </script>
 
 
-    
-    <%if(locals.company_name){%>
-      
-    <%}%>
+<video autoplay muted loop class="video-background">
+    <source src="assets/flowers.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+   
 
+
+
+
+
+
+
+
+
+
+
+
+    <%if(locals.company_name){%> 
+    <%}%>
     <% if (locals.job1) { %>
         <% for (var i = 0; i < job1.length; i++) { %>
             <div class="jobs_applied">
@@ -113,9 +127,22 @@
         <% } %>
     <% } %>
 
+
+
+
+
+
+
+
+
+
     <div class="more">
     <div class="one">
         <% if (locals.jobs) { %>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <p class="choose-job-title">Choose a job</p>
             <% for (var i = 0; i < jobs.length; i++) { %>
                 <a class="job-link" href="/company_students_applied/<%= id %>/<%= jobs[i].jobid %>">
@@ -129,6 +156,11 @@
     <div class="two">
         <% if (locals.student) { %>
             <% if(student.length>0){%>
+                
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="four">
             <form action="/company_shortlist/<%= job_id %>" method="POST" class="branch-form">
                 <div class="form-group">
@@ -185,8 +217,21 @@
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
     <% if (locals.z) { %>
-        
+        <video autoplay muted loop class="video-background">
+            <source src="assets/flowers.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <form class="registration-form" action="/submit_job/<%= id %>" method="post">
             <label class="form-label" for="minimum_cpi">Minimum CPI:</label>
             <input class="form-input" type="text" id="minimum_cpi" name="minimum_cpi" required>
@@ -207,6 +252,15 @@
         </form>
     <% } %>
     
+
+
+
+
+
+
+
+
+
 
 
     <% if (locals.selected) {
@@ -235,6 +289,17 @@
     
 
 
+
+
+
+
+
+
+
+
+
+
+
     <%if(locals.company_forget){%>
    
     <%if(locals.err){%>
@@ -252,6 +317,18 @@
         <button class="glow-on-hover" type="submit">Submit</button>
     </form>
 <%}%>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <%if(locals.e){%>
