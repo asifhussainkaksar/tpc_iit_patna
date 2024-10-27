@@ -112,15 +112,8 @@
 
 
 
-
-
-
-
-
-
-
-
         <%if(locals.e){%>
+
             <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1500">
                 <!-- Inner -->
                 <div id="carousel-inner" class="carousel-inner rounded-5 shadow-4-strong">
@@ -172,6 +165,10 @@
 
 
         <% if (locals.z) { %>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <form action="/admin_stats" method="post" class="branch-form">
                 <label for="specialisation" class="branch-form-label">Branch:</label>
                 <select class="branch-form-select" id="specialisation" name="specialisation" required>
@@ -190,6 +187,10 @@
         
         
         <% if (locals.f) { %>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="stats">
                 <p><strong>Total:</strong> <%= total %></p>
                 <p><strong>Placed:</strong> <%= placed %></p>
@@ -203,7 +204,10 @@
 
 
         <%if(locals.add_student){%>       
-
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <form action="/admin_add_student" method="POST" class="student-form">
                 <div class="form-group">
                     <label for="name" class="form-label">Name:</label>
@@ -264,8 +268,10 @@
 
 
         <%if(locals.add_company){%>
-            
-        
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <form action="/admin_add_company" method="POST" class="student-form">
                 <div class="form-group">
                     <label for="email" class="form-label">Email:</label>
@@ -299,7 +305,10 @@
 
         
         <%if(locals.total_student){%>
-            
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="moo">
             
             <form action="/admin_students" method="post" class="branch-form2">
@@ -390,6 +399,10 @@
         <div class="more">
         <div class="one">
         <%if(locals.company){%>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         <h2 class="company-heading">Companies</h2>
         <%for(var i=0; i<company.length; i++){%>
             <div class="nono">
@@ -413,6 +426,10 @@
         
         <div class="two">
         <% if(locals.jobs){%>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         <%for(var i=0;i<jobs.length;i++){%>   
             <div class="three">
                 <p><strong>Role:</strong> <%= jobs[i].roles %></p>

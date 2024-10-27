@@ -108,6 +108,10 @@
     
         
         <% if(locals.student) {%> 
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <%for(var i=0; i<student.length; i++){ %>
                 <div class="student-profile">
 
@@ -143,6 +147,10 @@
         <div class="more">
         <div class="one">
         <%if(locals.company){%>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
         <h2 class="company-heading">Companies</h2>
         <%for(var i=0; i<company.length; i++){%>
             <a href="/student_company_jobs/<%=company[i].company_id%>" class="company-link">
@@ -154,6 +162,7 @@
         
         <div class="two">
         <% if(locals.jobs){%>
+            
         <h2>Jobs</h2>
         <%for(var i=0;i<jobs.length;i++){%>   
             <div class="three">
@@ -194,7 +203,9 @@
         
         
         <%if(locals.jobs_applied){
+            
         if(jobs_applied.length>0){
+            
         for(var i=0; i<jobs_applied.length; i++){%>
             <div class="job-card">
                 <p class="job-info"><strong>Company:</strong> <%= jobs_applied[i].company_name %></p>
@@ -211,6 +222,7 @@
         
         
     <%if(locals.alumni){
+        
         for(var i=0; i<alumni.length; i++){%>
             <div class="alumni-card">
                 <p class="alumni-info"><strong>Name:</strong> <%= alumni[i].name %></p>
@@ -227,6 +239,7 @@
     
     
         <% if (locals.z) { %>
+            
         
         <div class="update-form">
 
@@ -285,6 +298,10 @@
     
     
     <% if (locals.offers) { %>
+        <video autoplay muted loop class="video-background">
+            <source src="assets/flowers.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     <% if (offers.length > 0) { %>
         <% for (var i = 0; i < offers.length; i++) { %>
             <div class="jobs_applied">
@@ -301,6 +318,10 @@
 
 
 <%if(locals.forget_password){%>
+    <video autoplay muted loop class="video-background">
+        <source src="assets/flowers.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="password_reset">
     <%if(locals.err){%>
         <p class="error-message"><%= err %></p>
