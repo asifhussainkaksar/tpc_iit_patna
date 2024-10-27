@@ -6,7 +6,7 @@
     <title>Placement Portal</title>
     <link rel="stylesheet" href="/styles/company.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="/assets/logo2.png">
+    <link rel="icon" href="assets/logo2.png">
         <!-- Bootstrap CSS for Carousel-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
            <!-- Tailwind CSS for new Navbar -->
@@ -111,7 +111,9 @@
 
 
 
-    
+    <%if(locals.company_name){%>
+        
+    <%}%>
     <% if (locals.job1) { %>
         <video autoplay muted loop class="video-background">
             <source src="assets/flowers.mp4" type="video/mp4">
@@ -140,7 +142,7 @@
     <div class="one">
         <% if (locals.jobs) { %>
             <video autoplay muted loop class="video-background">
-                <source src="/assets/flowers.mp4" type="video/mp4">
+                <source src="assets/flowers.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <p class="choose-job-title">Choose a job</p>
@@ -228,7 +230,7 @@
 
     <% if (locals.z) { %>
         <video autoplay muted loop class="video-background">
-            <source src="/assets/flowers.mp4" type="video/mp4">
+            <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <form class="registration-form" action="/submit_job/<%= id %>" method="post">
@@ -264,7 +266,7 @@
 
     <% if (locals.selected) {%>
         <video autoplay muted loop class="video-background">
-            <source src="/assets/flowers.mp4" type="video/mp4">
+            <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <%if (selected.length > 0) {
@@ -305,7 +307,7 @@
 
     <%if(locals.company_forget){%>
         <video autoplay muted loop class="video-background">
-            <source src="/assets/flowers.mp4" type="video/mp4">
+            <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     <%if(locals.err){%>

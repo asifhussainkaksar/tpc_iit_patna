@@ -111,12 +111,14 @@
 
 
 
-    
-    <% if (locals.job1) { %>
+    <%if(locals.company_name){%>
         <video autoplay muted loop class="video-background">
             <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+    
+    <% if (locals.job1) { %>
+        
         <% for (var i = 0; i < job1.length; i++) { %>
             <div class="jobs_applied">
                 <p><strong>Role:</strong> <%= job1[i].roles %></p>
@@ -126,7 +128,7 @@
             </div>
         <% } %>
     <% } %>
-
+    <%}%>
 
 
 
@@ -140,7 +142,7 @@
     <div class="one">
         <% if (locals.jobs) { %>
             <video autoplay muted loop class="video-background">
-                <source src="/assets/flowers.mp4" type="video/mp4">
+                <source src="assets/flowers.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <p class="choose-job-title">Choose a job</p>
@@ -228,7 +230,7 @@
 
     <% if (locals.z) { %>
         <video autoplay muted loop class="video-background">
-            <source src="/assets/flowers.mp4" type="video/mp4">
+            <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <form class="registration-form" action="/submit_job/<%= id %>" method="post">
@@ -264,7 +266,7 @@
 
     <% if (locals.selected) {%>
         <video autoplay muted loop class="video-background">
-            <source src="/assets/flowers.mp4" type="video/mp4">
+            <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <%if (selected.length > 0) {
@@ -305,7 +307,7 @@
 
     <%if(locals.company_forget){%>
         <video autoplay muted loop class="video-background">
-            <source src="/assets/flowers.mp4" type="video/mp4">
+            <source src="assets/flowers.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     <%if(locals.err){%>
