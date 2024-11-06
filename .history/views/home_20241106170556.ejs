@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placement Portal</title>
+    <!--Adding External CSS-->
     <link rel="stylesheet" href="/styles/home.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,14 +17,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Old+Uyghur&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS for new Navbar -->
+    <!-- Tailwind CSS for Nav bar -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
 
     
 
 </head>
-<body style="background-color: blue">
+<body>
     
 <!--New Nav bar-->
 <nav class="bg-gray-800">
@@ -49,19 +50,15 @@
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex flex-shrink-0 items-center">
                     <a href="/"> <img class="h-10 w-auto"
-                        src="assets/logo1.png"
+                        src="/assets/logo1.png"
                         alt="College logo"> </a>
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <a href="/student" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                            aria-current="page">Students</a>
-                        <a href="/company"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Company</a>
-                        <a href="/alumni"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Alumni</a>
-                        <a href="/admin"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Admin</a>
+                        <a href="/student" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
+                        <a href="/company" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Company</a>
+                        <a href="/alumni"  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Alumni</a>
+                        <a href="/admin"   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Admin</a>
                     </div>
                 </div>
             </div>
@@ -70,10 +67,10 @@
     </div>
     </div>
 
-    <div class="sm:hidden" id="mobile-menu">
+    <div class="sm:hidden hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <a href="/student" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                aria-current="page">Students</a>
+            <a href="/student" 
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Students</a>
             <a href="/company"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Company</a>
             <a href="/alumni"
@@ -96,54 +93,176 @@
     });
 </script>
 
+<!--Navbar ends here-->
+
 
     <% if (locals.z) { %>
         <% if (z == 1) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+            <!-- Video Background -->
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1 id="animated-heading" class="text-3xl font-bold text-black mt-10 mb-10">Training and Placement Cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Student Login</h2>
                 <form action="/student_login" method="POST">  
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
-        <% } else if (z == 2) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+            
+        <% } else if (z == 2) { %>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1 id="animated-heading1" class="text-3xl font-bold text-black mt-10 mb-10">Training and Placement Cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Company Login</h2>
                 <form action="/company_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
             </div>
-        <% } else if (z == 3) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading1');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+
+        <% } else if (z == 3) { %>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1 id="animated-heading2" class="text-3xl font-bold text-black mt-10 mb-10">Training and Placement Cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Alumni Login</h2>
                 <form action="/alumni_login" method="POST">
                     <input type="text" id="email" name="email" placeholder="Email" required>                   
                     <input type="password" id="password" name="password" placeholder="password" required>     
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
-                <a href="/alumni_form" >register</a>
+             <!--   <a href="/alumni_form" >Register</a>    -->
             </div>
-        <% } else if (z == 4) { %> 
-            <h1 class="text-3xl font-bold text-black mt-8">Training and placement cell IIT Patna</h1>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading2');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+
+        <% } else if (z == 4) { %>
+            <video autoplay muted loop class="video-background">
+                <source src="assets/flowers.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+
+
+            <h1 id="animated-heading4" class="text-3xl font-bold text-black mt-10 mb-10">Training and Placement Cell IIT Patna</h1>
             <div class="login-container">
                 <h2 class="text-2xl">Admin Login</h2>
                 <form action="/admin_login" method="POST">                   
                     <input type="text" id="email" name="email" placeholder="Email" required>               
                     <input type="password" id="password" name="password" placeholder="password" required>
-                    <button type="submit">Login</button>
+                    <button class="glow-on-hover" type="submit">Login</button>
                 </form>
-
+                <a href="/admin_form">Register</a>
             </div>
+
+
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const heading = document.getElementById('animated-heading4');
+                const text = heading.innerText;
+                heading.innerText = ''; // Clear original text
+                
+                // Split the text into spans
+                for(var i=0;i<text.length;i++){
+                const span = document.createElement('span');
+                var char=text[i];
+                span.innerText = char;
+                span.style.opacity = '0';
+                heading.appendChild(span);
+            
+                // Animate each letter one by one
+                setTimeout(() => {
+                span.style.opacity = '1';
+                }, i * 100); // Adjust timing as per your need
+                };
+            
+                });
+            </script>
+
         <% } %>
     <% }else{%>
-        
-        <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <h1 id="animated-heading3" class="text-3xl font-bold text-black mt-3 mb-3">Training and Placement Cell IIT Patna</h1>
+        <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1500">
             <!-- Inner -->
             <div id="carousel-inner" class="carousel-inner rounded-5 shadow-4-strong">
                 <div class="carousel-item active">
@@ -181,10 +300,38 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const heading = document.getElementById('animated-heading3');
+            const text = heading.innerText;
+            heading.innerText = ''; // Clear original text
+            
+            // Split the text into spans
+            for(var i=0;i<text.length;i++){
+            const span = document.createElement('span');
+            var char=text[i];
+            span.innerText = char;
+            span.style.opacity = '0';
+            heading.appendChild(span);
+        
+            // Animate each letter one by one
+            setTimeout(() => {
+            span.style.opacity = '1';
+            }, i * 100); // Adjust timing as per your need
+            };
+        
+            });
+        </script>
         
         <!-- Bootstrap JS (required for carousel functionality) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <%}%>
+
+
+    <!--Adding Text Animation when home.ejs appear for the first time-->
+
 
 
 </body>
