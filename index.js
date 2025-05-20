@@ -41,19 +41,24 @@ db.connect()
 
 
 
-
-/*const db = new pg.Client({
+/*
+const db = new pg.Client({
    user: "postgres",
    host: "localhost",
    database: "tpc",
+<<<<<<< HEAD
    password: "Qwert..",
    port: 5432,
+=======
+   password: "stewardesses",
+   port: 5433,
+>>>>>>> 1a0b9875b97cdb24a732a6acc66e7d769f6161aa
 });
 
  db.connect();
+
+
 */
-
-
 
 
 app.use(session({
