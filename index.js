@@ -46,7 +46,7 @@ db.connect()
    user: "postgres",
    host: "localhost",
    database: "tpc",
-   password: "stewardesses",
+   password: "Qwert..",
    port: 5432,
 });
 
